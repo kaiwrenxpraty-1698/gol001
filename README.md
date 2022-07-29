@@ -4,7 +4,7 @@
 
 ### What is Conway's Game of Life?
 
-[Sourced from Wikipedia] (/https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+[Sourced from Wikipedia](/https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 Disclaimer: I am adding the what I understand from the wiki article over here.
 
@@ -20,6 +20,12 @@ Explanation: In pure programming terms, from an execution lens, this is a 2D Mat
 2. 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 Explanation: This is the the logic that we need to implement in order to generate the the final state for the 2D Matrix.
+
+After trying to come up with a naive approach and re-reading the wikipedia article, I have come to this conclusion:
+
+1. Any live cell with two or three live neighbours survives.
+2. Any dead cell with three live neighbours becomes a live cell.
+3. All other live cells die in the next generation. Similarly, all other dead cells stay dead.
 
 
 ### Initial Execution Steps:
