@@ -5,13 +5,22 @@ Rules to this solution:
 2. I will use a sample list of list to build a matrix for the problem statement.
 '''
 
-matrix = [[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]];
+# matrix = [[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]];
 
 '''
 Basic background: the output can be returned in a separate memory space or can be achieved by in-place operation. 
 '''
 
-#approach by utilising extra memory
+'''Case 1:approach by utilising extra memory'''
+
+# number of rows in the matrix
+N = int(input()); 
+#initialise the matrix
+matrix = [];
+count = 0;
+while count < N:
+    matrix.append(list(map(int,input().split())))
+    count += 1;
 
 
 def naive_solution(matrix):
@@ -31,7 +40,8 @@ def naive_solution(matrix):
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
 
-    print(output_matrix) # adding to compare the previous state
+    print(f"This is the label output matrix --> {output_matrix}") # adding to compare the previous state
+
     for i in range(m):
         for j in range(n):
             if matrix[i][j] == 1:
@@ -47,4 +57,4 @@ def naive_solution(matrix):
 
     return output_matrix
 
-print(naive_solution(matrix))
+print(f"This is the final state of the output matrix --> {naive_solution(matrix)}")
