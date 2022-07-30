@@ -30,8 +30,9 @@ def naive_solution(matrix):
                     if x == i and y == j: # if the scanning matrix matches the cell; it simply skips the scan
                         continue
                     living_cells += matrix[x][y] % 2;
-                    print(f"this is the row {i} and column {j} and the element {matrix[i][j]}, and {living_cells} and product {matrix[x][y] % 2}");
+            
+            output_matrix[i].append(living_cells)
 
-
+    return output_matrix
 
 print(naive_solution(matrix))
