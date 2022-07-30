@@ -13,6 +13,15 @@ Basic background: the output can be returned in a separate memory space or can b
 
 #approach by utilising extra memory
 
+import argparse
+parser = argparse.ArgumentParser()
+
+parser.add_argument("--matrix", type=[], required= True)
+
+args = parser.parse_args()
+
+matrix = args.matrix
+
 def naive_solution(matrix):
     output_matrix = [[] for i in range(len(matrix))]
 
@@ -20,17 +29,14 @@ def naive_solution(matrix):
 
     for i in range(m):
         for j in range(n):
-
             # we access the cells of the matrix
             # we will proceed to count the neighbours of each cell
-
             living_cells = 0;
             for x in range(max(i - 1, 0), min(i + 2, m)):
                 for y in range(max(j - 1, 0), min(j + 2, n)):
                     if x == i and y == j: # if the scanning matrix matches the cell; it simply skips the scan
                         continue
-                    living_cells += matrix[x][y] % 2;
-            
+                    living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
 
     print(output_matrix) # adding to compare the previous state
@@ -41,13 +47,11 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 1;
                 else:
                     output_matrix[i][j] = 0;
-
             else:
                 if output_matrix[i][j] == 3:
                     output_matrix[i][j] = 1;
                 else:
                     output_matrix[i][j] = 0;
-
 
     return output_matrix
 
