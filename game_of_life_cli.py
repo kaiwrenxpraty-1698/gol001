@@ -12,3 +12,15 @@ Basic background: the output can be returned in a separate memory space or can b
 '''
 
 #approach by utilising extra memory
+
+def naive_solution(matrix):
+    output_matrix = [[] for i in range(len(matrix))]
+
+    m, n = len(matrix), len(matrix[0]);
+
+    for i in range(m):
+        for j in range(n):
+              
+
+
+print(naive_solution(matrix))
