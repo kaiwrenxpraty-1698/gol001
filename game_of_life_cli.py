@@ -13,14 +13,6 @@ Basic background: the output can be returned in a separate memory space or can b
 
 #approach by utilising extra memory
 
-import argparse
-parser = argparse.ArgumentParser()
-
-parser.add_argument("--matrix", type=[], required= True)
-
-args = parser.parse_args()
-
-matrix = args.matrix
 
 def naive_solution(matrix):
     output_matrix = [[] for i in range(len(matrix))]
