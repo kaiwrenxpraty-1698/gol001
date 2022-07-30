@@ -40,7 +40,7 @@ def naive_solution(matrix):
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
 
-    print(f"This is the label output matrix --> {output_matrix}") # adding to compare the previous state
+    print(f"This is the labelled output matrix --> {output_matrix}") # adding to compare the previous state
 
     for i in range(m):
         for j in range(n):
