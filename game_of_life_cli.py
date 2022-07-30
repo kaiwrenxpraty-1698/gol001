@@ -33,6 +33,22 @@ def naive_solution(matrix):
             
             output_matrix[i].append(living_cells)
 
+    print(output_matrix) # adding to compare the previous state
+    for i in range(m):
+        for j in range(n):
+            if matrix[i][j] == 1:
+                if output_matrix[i][j] == 2 or output_matrix[i][j] == 3:
+                    output_matrix[i][j] = 1;
+                else:
+                    output_matrix[i][j] = 0;
+
+            else:
+                if output_matrix[i][j] == 3:
+                    output_matrix[i][j] = 1;
+                else:
+                    output_matrix[i][j] = 0;
+
+
     return output_matrix
 
 print(naive_solution(matrix))
