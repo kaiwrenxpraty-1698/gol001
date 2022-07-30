@@ -24,15 +24,34 @@ while count < N:
     matrix.append(list(map(int,input().split())))
     count += 1;
 
+#helper function to print matrices
+def print_array(matrix):
+    for idx in range(len(matrix)):
+        print(matrix[idx])
+    print()
 
+# helper function to count elements
+def count_elements(matrix):
+    m, n = len(matrix), len(matrix[0]);
+    input_zeroes, input_ones = 0, 0;
+    for i in range(m):
+        for j in range(n):
+            if matrix[i][j] == 1:
+                input_ones += 1;
+            else:
+                input_zeroes += 1;
+    return [input_ones, input_zeroes]
+
+#main function
 def naive_solution(matrix):
     output_matrix = [[] for i in range(len(matrix))]
 
     m, n = len(matrix), len(matrix[0]);
-
+    input_zeroes, input_ones = 0, 0;
     for i in range(m):
         for j in range(n):
             # we access the cells of the matrix
+
             # we will proceed to count the neighbours of each cell
             living_cells = 0;
             for x in range(max(i - 1, 0), min(i + 2, m)):
@@ -42,29 +61,28 @@ def naive_solution(matrix):
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
 
-    print(f"Here is your label state matrix -->")# adding to compare the previous state
-    for idx in range(len(output_matrix)):
-        print(output_matrix[idx])
-    print()
+    print(f"Here is your label state matrix -->") # adding to compare the previous state
+    print_array(output_matrix)
 
     for i in range(m):
         for j in range(n):
             if matrix[i][j] == 1:
                 if output_matrix[i][j] == 2 or output_matrix[i][j] == 3:
-                    output_matrix[i][j] = 1;
+                    output_matrix[i][j] = 1;   
                 else:
                     output_matrix[i][j] = 0;
+           
             else:
                 if output_matrix[i][j] == 3:
                     output_matrix[i][j] = 1;
                 else:
                     output_matrix[i][j] = 0;
+                    
 
     return output_matrix
 
 output_matrix = naive_solution(matrix);
 print(f"Here is your output matrix -->")
-for idx in range(len(output_matrix)):
-    print(output_matrix[idx])
-print()
+print_array(output_matrix)
 
+print(f"Summary: In the input array of dimension {N} X {len(matrix[0])}, there are {count_elements(matrix)[0]} 1s and {count_elements(matrix)[1]} 0s \nand the output array if of dimension {len(output_matrix)} X {len(output_matrix[0])} and the total number of {count_elements(output_matrix)[0]} 1s and {count_elements(output_matrix)[1]} 0s")
