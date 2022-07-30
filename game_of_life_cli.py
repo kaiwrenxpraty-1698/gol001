@@ -3,26 +3,9 @@ Attempt one: 29072022: Trying to come up with a naive approach to the problem
 Rules to this solution:
 1. For this attempt, we will not dwell deep into optimisation. 
 2. I will use a sample list of list to build a matrix for the problem statement.
-'''
-
-# matrix = [[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]];
-
-'''
 Basic background: the output can be returned in a separate memory space or can be achieved by in-place operation. 
+Case 1:approach by utilising extra memory
 '''
-
-'''Case 1:approach by utilising extra memory'''
-
-# number of rows in the matrix
-print(f"Please enter the number of rows in the input matrix")
-N = int(input()); 
-print(f"Please start to input each row, one by one. Ensure the number of elements in each row are same")
-#initialise the matrix
-matrix = [];
-count = 0;
-while count < N:
-    matrix.append(list(map(int,input().split())))
-    count += 1;
 
 #helper function to print matrices
 def print_array(matrix):
@@ -79,8 +62,20 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 0;
                     
     return output_matrix
-    
+
 if __name__ == "__main__":
+    # number of rows in the matrix
+    print(f"Please enter the number of rows in the input matrix")
+    N = int(input()); 
+    print(f"Please start to input each row, one by one. Ensure the number of elements in each row are same")
+    
+    #initialise the matrix
+    matrix = [];
+    count = 0;
+    while count < N:
+        matrix.append(list(map(int,input().split())))
+        count += 1;
+
     output_matrix = naive_solution(matrix);
     print(f"Here is your output matrix -->")
     print_array(output_matrix)
