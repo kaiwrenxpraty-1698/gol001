@@ -14,7 +14,9 @@ Basic background: the output can be returned in a separate memory space or can b
 '''Case 1:approach by utilising extra memory'''
 
 # number of rows in the matrix
+print(f"Please enter the number of rows in the input matrix")
 N = int(input()); 
+print(f"Please start to input each row, one by one. Ensure the number of elements in each row are same")
 #initialise the matrix
 matrix = [];
 count = 0;
@@ -40,7 +42,10 @@ def naive_solution(matrix):
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
 
-    print(f"This is the labelled output matrix --> {output_matrix}") # adding to compare the previous state
+    print(f"Here is your label state matrix -->")# adding to compare the previous state
+    for idx in range(len(output_matrix)):
+        print(output_matrix[idx])
+    print()
 
     for i in range(m):
         for j in range(n):
@@ -57,4 +62,9 @@ def naive_solution(matrix):
 
     return output_matrix
 
-print(f"This is the final state of the output matrix --> {naive_solution(matrix)}")
+output_matrix = naive_solution(matrix);
+print(f"Here is your output matrix -->")
+for idx in range(len(output_matrix)):
+    print(output_matrix[idx])
+print()
+
