@@ -78,11 +78,11 @@ def naive_solution(matrix):
                 else:
                     output_matrix[i][j] = 0;
                     
-
     return output_matrix
+    
+if __name__ == "__main__":
+    output_matrix = naive_solution(matrix);
+    print(f"Here is your output matrix -->")
+    print_array(output_matrix)
 
-output_matrix = naive_solution(matrix);
-print(f"Here is your output matrix -->")
-print_array(output_matrix)
-
-print(f"Summary: In the input array of dimension {N} X {len(matrix[0])}, there are {count_elements(matrix)[0]} 1s and {count_elements(matrix)[1]} 0s \nand the output array if of dimension {len(output_matrix)} X {len(output_matrix[0])} and the total number of {count_elements(output_matrix)[0]} 1s and {count_elements(output_matrix)[1]} 0s")
+    print(f"Summary: In the input array of dimension {N} X {len(matrix[0])}, there are {count_elements(matrix)[0]} 1s and {count_elements(matrix)[1]} 0s \nand the output array if of dimension {len(output_matrix)} X {len(output_matrix[0])} and the total number of {count_elements(output_matrix)[0]} 1s and {count_elements(output_matrix)[1]} 0s")
