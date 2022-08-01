@@ -10,14 +10,25 @@ import os
 #helper function to print matrices
 from time import sleep
 
+def starter_function():
+    print(f"Welcome to the Game of Life CLI Application");
+    sleep(.5);
+    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider");
+    print(f"To select the pattern you want to generate, type the option number from the list shown above -->");
+    option = int(input());
+    print(f"Here is your input matrix -->");
+
+    return option
 
 def input_matrix(option):
     if option == 1:
-        matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+        matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]];
     elif option == 2:
-        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]]
+        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]];
     elif option == 3:
-        matrix = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]
+        matrix = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]];
+    elif option == 4:
+        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0]];
     return matrix
 
 def print_array(matrix):
@@ -74,12 +85,24 @@ def naive_solution(matrix):
     return output_matrix
 # Adding driver function to animate Cases 3 & 4 from our SE Log Standard Examples:
 def driver_function(option, matrix):
+    def summary(option): #helper function to print summaries
+        if option == 1:
+            print(f"This is the most common still life pattern of Game of Life: Block \nThe state of matrix is identical to the input matrix");
+        elif option == 2:
+            print(f"This is the another common still life pattern of Game of Life: Bee-hive \nThe state of matrix is identical to the input matrix");
+        elif option == 3:
+            print(f"This is a popular oscillator pattern of Game of Life: Blinker \nThe matrix reaches its initial state after exactly 2 iterations, \nhence the pattern keeps repeating itself");
+        elif option == 4:
+            print(f"This is a popular oscillator pattern of Game of Life: Toad \nThe matrix reaches its initial state after exactly 2 iterations, \nhence the pattern keeps repeating itself");
+
+
     if option == 1 or option == 2:
         output_matrix = naive_solution(matrix);
         print(f"Here is your output matrix -->");
         print_array(output_matrix);
-        print(f"Here is your output matrix -->");
-    elif option == 3:
+        summary(option)
+        
+    elif option == 3 or option == 4:
         count = 0;
         while count < 10:
             matrix = naive_solution(matrix);
@@ -87,18 +110,13 @@ def driver_function(option, matrix):
             print(f"Here is your output matrix -->");
             print_array(matrix);
             count += 1;
+            print(f"State of the matrix --> {count}")
+        summary(option)
 
         
 
 if __name__ == "__main__":
-    # number of rows in the matrix
-    print(f"Welcome to the Game of Life CLI Application");
-    sleep(.5);
-    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider");
-    print(f"To select the pattern you want to generate, type the option number from the list shown above -->");
-    option = int(input());
-
-    print(f"Here is your input matrix -->");
+    option = starter_function();
 
     matrix = input_matrix(option);
     print_array(matrix);
