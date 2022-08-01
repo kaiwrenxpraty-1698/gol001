@@ -7,7 +7,7 @@ Basic background: the output can be returned in a separate memory space or can b
 Case 1:approach by utilising extra memory
 '''
 from time import sleep
-#helper fu  nction to print matrices
+#helper function to print matrices
 def starter_function():
     print(f"Welcome to the Game of Life CLI Application");
     sleep(.5);
@@ -36,18 +36,6 @@ def input_matrix(option):
 def print_array(matrix):
     for idx in range(len(matrix)):
         print(matrix[idx])
-
-# helper function to count elements
-def count_elements(matrix):
-    m, n = len(matrix), len(matrix[0]);
-    input_zeroes, input_ones = 0, 0;
-    for i in range(m):
-        for j in range(n):
-            if matrix[i][j] == 1:
-                input_ones += 1;
-            else:
-                input_zeroes += 1;
-    return [input_ones, input_zeroes]
 
 #main function
 def naive_solution(matrix):
