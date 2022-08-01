@@ -1,10 +1,14 @@
 '''
-Attempt one: 29072022: Trying to come up with a naive approach to the problem
-Rules to this solution:
-1. For this attempt, we will not dwell deep into optimisation. 
-2. I will use a sample list of list to build a matrix for the problem statement.
-Basic background: the output can be returned in a separate memory space or can be achieved by in-place operation. 
-Case 1:approach by utilising extra memory
+Attempt Two: 01082022: Trying to implement standard examples:
+1. Block
+2. Bee-Hive
+3. Blinker
+4. Toad
+5. Glider
+
+Main Objectives:
+1. Implement the standard examples.
+2. Improve the user experience for the end user.
 '''
 from time import sleep
 #helper function to print matrices
