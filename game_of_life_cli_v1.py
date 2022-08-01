@@ -43,7 +43,8 @@ def input_matrix(option):
         matrix = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0]] + [[0 for i in range(10)] for j in range(7)];
     else:
         print(f"Sorry! Invalid input")
-        return 0
+        print()
+        exit();
     return matrix
 
 def print_array(matrix):
@@ -105,7 +106,9 @@ def driver_function(option, matrix):
         elif option == 4:
             print(f"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");  
         elif option == 5:
-             print(f"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix");  
+             print(f"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix"); 
+        else:
+            return 0
         print()
 
     if option == 1 or option == 2:
@@ -143,6 +146,8 @@ def driver_function(option, matrix):
             print();
             count += 1;
         summary(option);
+    else:
+        return 0
 
 
 if __name__ == "__main__":
