@@ -6,9 +6,10 @@ Rules to this solution:
 Basic background: the output can be returned in a separate memory space or can be achieved by in-place operation. 
 Case 1:approach by utilising extra memory
 '''
-
+import os
 #helper function to print matrices
 from time import sleep
+
 
 def input_matrix(option):
     if option == 1:
@@ -38,6 +39,7 @@ def count_elements(matrix):
 
 #main function
 def naive_solution(matrix):
+    
     output_matrix = [[] for i in range(len(matrix))]
 
     m, n = len(matrix), len(matrix[0]);
@@ -62,7 +64,7 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 1;   
                 else:
                     output_matrix[i][j] = 0;
-           
+        
             else:
                 if output_matrix[i][j] == 3:
                     output_matrix[i][j] = 1;
@@ -70,20 +72,38 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 0;
                     
     return output_matrix
+# Adding driver function to animate Cases 3 & 4 from our SE Log Standard Examples:
+def driver_function(option, matrix):
+    if option == 1 or option == 2:
+        clear = lambda: os.system('clear')
+        clear()
+        output_matrix = naive_solution(matrix);
+        print(f"Here is your output matrix -->");
+        print_array(output_matrix);
+    elif option == 3:
+        count = 0;
+        while count < 10:
+            clear = lambda: os.system('clear');
+            clear();
+            matrix = naive_solution(matrix);
+            count += 1;
+
+        
 
 if __name__ == "__main__":
     # number of rows in the matrix
     print(f"Welcome to the Game of Life CLI Application");
-    sleep(2);
+    sleep(.75);
     print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider");
     print(f"To select the pattern you want to generate, type the option number from the list shown above -->");
+    option = int(input());
 
     print(f"Here is your input matrix -->");
-    option = int(input());
 
     matrix = input_matrix(option);
     print_array(matrix)
+    driver_function(option, matrix)
 
-    output_matrix = naive_solution(matrix);
-    print(f"Here is your output matrix -->");
-    print_array(output_matrix);
+    # output_matrix = naive_solution(matrix, option);
+    # print(f"Here is your output matrix -->");
+    # print_array(output_matrix);
