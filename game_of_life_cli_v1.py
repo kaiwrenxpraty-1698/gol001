@@ -6,10 +6,8 @@ Rules to this solution:
 Basic background: the output can be returned in a separate memory space or can be achieved by in-place operation. 
 Case 1:approach by utilising extra memory
 '''
-import os
-#helper function to print matrices
 from time import sleep
-
+#helper fu  nction to print matrices
 def starter_function():
     print(f"Welcome to the Game of Life CLI Application");
     sleep(.5);
@@ -17,10 +15,10 @@ def starter_function():
     print(f"To select the pattern you want to generate, type the option number from the list shown above -->");
     option = int(input());
     print(f"Here is your input matrix -->");
-
-    print()
+    print(); #added space
     matrix = input_matrix(option);
     print_array(matrix);
+    print()
 
     return option, matrix
 
@@ -89,20 +87,23 @@ def naive_solution(matrix):
 # Adding driver function to animate Cases 3 & 4 from our SE Log Standard Examples:
 def driver_function(option, matrix):
     def summary(option): #helper function to print summaries
+        print()
         if option == 1:
-            print(f"This is the most common still life pattern of Game of Life: Block \nThe state of matrix is identical to the input matrix");
+            print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.");
         elif option == 2:
-            print(f"This is the another common still life pattern of Game of Life: Bee-hive \nThe state of matrix is identical to the input matrix");
+            print(f"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.");
         elif option == 3:
-            print(f"This is a popular oscillator pattern of Game of Life: Blinker \nThe matrix reaches its initial state after exactly 2 iterations, \nhence the pattern keeps repeating itself");
+            print(f"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");
         elif option == 4:
-            print(f"This is a popular oscillator pattern of Game of Life: Toad \nThe matrix reaches its initial state after exactly 2 iterations, \nhence the pattern keeps repeating itself");
-
+            print(f"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");  
+        print()
 
     if option == 1 or option == 2:
         output_matrix = naive_solution(matrix);
         print(f"Here is your output matrix -->");
+        print();
         print_array(output_matrix);
+        print();
         summary(option)
         
     elif option == 3 or option == 4:
@@ -113,12 +114,11 @@ def driver_function(option, matrix):
             print(f"Here is your output matrix -->");
             print();
             print_array(matrix);
-            count += 1;
-            print(f"State of the matrix --> {count}")
             print();
-        summary(option)
-
-        
+            print(f"State of the matrix --> {count%2}")
+            count += 1;
+            print();
+        summary(option);
 
 if __name__ == "__main__":
     option, matrix = starter_function();
