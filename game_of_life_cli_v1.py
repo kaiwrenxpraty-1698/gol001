@@ -18,7 +18,11 @@ def starter_function():
     option = int(input());
     print(f"Here is your input matrix -->");
 
-    return option
+    print()
+    matrix = input_matrix(option);
+    print_array(matrix);
+
+    return option, matrix
 
 def input_matrix(option):
     if option == 1:
@@ -34,7 +38,6 @@ def input_matrix(option):
 def print_array(matrix):
     for idx in range(len(matrix)):
         print(matrix[idx])
-    print()
 
 # helper function to count elements
 def count_elements(matrix):
@@ -108,16 +111,15 @@ def driver_function(option, matrix):
             matrix = naive_solution(matrix);
             sleep(.5)
             print(f"Here is your output matrix -->");
+            print();
             print_array(matrix);
             count += 1;
             print(f"State of the matrix --> {count}")
+            print();
         summary(option)
 
         
 
 if __name__ == "__main__":
-    option = starter_function();
-
-    matrix = input_matrix(option);
-    print_array(matrix);
+    option, matrix = starter_function();
     driver_function(option, matrix);
