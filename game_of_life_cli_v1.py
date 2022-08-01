@@ -10,6 +10,12 @@ Case 1:approach by utilising extra memory
 #helper function to print matrices
 from time import sleep
 
+def input_matrix(option):
+    if option == 1:
+        matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+    elif option == 2:
+        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]]
+    return matrix
 
 def print_array(matrix):
     for idx in range(len(matrix)):
@@ -73,19 +79,16 @@ if __name__ == "__main__":
     print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
     print(f"To select the pattern you want to generate, type the option number from the list shown above");
     option = int(input());
-    print(f"Please enter the number of rows in the input matrix")
-    N = int(input()); 
-    print(f"Please start to input each row, one by one. Ensure the number of elements in each row are same")
-
-    #initialise the matrix
-    matrix = [];
-    count = 0;
-    while count < N:
-        matrix.append(list(map(int,input().split())))
-        count += 1;
+    # print(f"Please enter the number of rows in the input matrix")
+    # N = int(input()); 
+    
+    matrix = input_matrix(option);
+    for idx in range(len(matrix)):
+        print(matrix[idx])
+    print()
 
     output_matrix = naive_solution(matrix);
     print(f"Here is your output matrix -->")
     print_array(output_matrix)
 
-    print(f"Summary: In the input array of dimension {N} X {len(matrix[0])}, there are {count_elements(matrix)[0]} 1s and {count_elements(matrix)[1]} 0s \nand the output array is of dimension {len(output_matrix)} X {len(output_matrix[0])} and the total number of {count_elements(output_matrix)[0]} 1s and {count_elements(output_matrix)[1]} 0s")
+    # print(f"Summary: In the input array of dimension {N} X {len(matrix[0])}, there are {count_elements(matrix)[0]} 1s and {count_elements(matrix)[1]} 0s \nand the output array is of dimension {len(output_matrix)} X {len(output_matrix[0])} and the total number of {count_elements(output_matrix)[0]} 1s and {count_elements(output_matrix)[1]} 0s")
