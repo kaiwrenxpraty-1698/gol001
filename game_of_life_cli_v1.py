@@ -8,6 +8,9 @@ Case 1:approach by utilising extra memory
 '''
 
 #helper function to print matrices
+from time import sleep
+
+
 def print_array(matrix):
     for idx in range(len(matrix)):
         print(matrix[idx])
@@ -65,6 +68,11 @@ def naive_solution(matrix):
 
 if __name__ == "__main__":
     # number of rows in the matrix
+    print(f"Welcome to the Game of Life CLI Application")
+    sleep(2);1
+    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
+    print(f"To select the pattern you want to generate, type the option number from the list shown above");
+    option = int(input());
     print(f"Please enter the number of rows in the input matrix")
     N = int(input()); 
     print(f"Please start to input each row, one by one. Ensure the number of elements in each row are same")
