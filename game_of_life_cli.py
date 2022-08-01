@@ -1,41 +1,76 @@
 '''
-Attempt one: 29072022: Trying to come up with a naive approach to the problem
-Rules to this solution:
-1. For this attempt, we will not dwell deep into optimisation. 
-2. I will use a sample list of list to build a matrix for the problem statement.
-Basic background: the output can be returned in a separate memory space or can be achieved by in-place operation. 
-Case 1:approach by utilising extra memory
-'''
+Attempt Two: 01082022: Trying to implement standard examples:
+1. Block
+2. Bee-Hive
+3. Blinker
+4. Toad
+5. Glider
 
+Main Objectives:
+1. Implement the standard examples.
+2. Improve the user experience for the end user
+    2.1 Make the printed matrix more readble
+    2.2 Provide clear instructions to the user for generating standard test cases.
+3. Make the code far more functional
+'''
+from time import sleep
 #helper function to print matrices
+def starter_function():
+    print(f"Welcome to the Game of Life CLI Application");
+    sleep(.5);
+    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider");
+    print(f"To select the pattern you want to generate, type the option number from the list shown above -->");
+    option = int(input());
+    print(f"Here is your input matrix -->");
+    print(); #added space
+    matrix = input_matrix(option);
+    print_matrix = new_matrix(matrix);
+    print_array(print_matrix);
+    print()
+
+    return option, matrix
+
+def input_matrix(option):
+    if option == 1:
+        matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]];
+    elif option == 2:
+        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]];
+    elif option == 3:
+        matrix = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]];
+    elif option == 4:
+        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0]];
+    elif option == 5:
+        matrix = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0]] + [[0 for i in range(10)] for j in range(7)];
+    else:
+        print(f"Sorry! Invalid input")
+        print()
+        exit();
+    return matrix
+
 def print_array(matrix):
     for idx in range(len(matrix)):
         print(matrix[idx])
-    print()
 
-# helper function to count elements
-def count_elements(matrix):
-    m, n = len(matrix), len(matrix[0]);
-    input_zeroes, input_ones = 0, 0;
-    for i in range(m):
-        for j in range(n):
-            if matrix[i][j] == 1:
-                input_ones += 1;
+def new_matrix(matrix): #helper function to change the final printed matrix
+    output_matrix = [[] for i in range(len(matrix))]
+
+    for idx in range(len(matrix)):
+        for idx2 in range(len(matrix[0])):
+            if matrix[idx][idx2] == 0:
+                output_matrix[idx].append(" ");
             else:
-                input_zeroes += 1;
-    return [input_ones, input_zeroes]
-
+                output_matrix[idx].append("A");
+    return output_matrix
+                
 #main function
 def naive_solution(matrix):
+    
     output_matrix = [[] for i in range(len(matrix))]
 
     m, n = len(matrix), len(matrix[0]);
     input_zeroes, input_ones = 0, 0;
     for i in range(m):
         for j in range(n):
-            # we access the cells of the matrix
-
-            # we will proceed to count the neighbours of each cell
             living_cells = 0;
             for x in range(max(i - 1, 0), min(i + 2, m)):
                 for y in range(max(j - 1, 0), min(j + 2, n)):
@@ -44,9 +79,6 @@ def naive_solution(matrix):
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
 
-    print(f"Here is your label state matrix -->") # adding to compare the previous state
-    print_array(output_matrix)
-
     for i in range(m):
         for j in range(n):
             if matrix[i][j] == 1:
@@ -54,7 +86,6 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 1;   
                 else:
                     output_matrix[i][j] = 0;
-           
             else:
                 if output_matrix[i][j] == 3:
                     output_matrix[i][j] = 1;
@@ -62,22 +93,63 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 0;
                     
     return output_matrix
+# Adding driver function to animate Cases 3 & 4 from our SE Log Standard Examples:
+def driver_function(option, matrix):
+    def summary(option): #helper function to print summaries
+        print()
+        if option == 1:
+            print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.");
+        elif option == 2:
+            print(f"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.");
+        elif option == 3:
+            print(f"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");
+        elif option == 4:
+            print(f"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");  
+        elif option == 5:
+             print(f"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix"); 
+        else:
+            return 0
+        print()
+
+    if option == 1 or option == 2:
+        output_matrix = naive_solution(matrix)
+        print_matrix = new_matrix(output_matrix);
+        print(f"Here is your output matrix -->");
+        print();
+        print_array(print_matrix);
+        print();
+        summary(option)
+        
+    elif option == 3 or option == 4:
+        count = 0;
+        while count < 10:
+            matrix = naive_solution(matrix);
+            print_matrix = new_matrix(matrix);
+            sleep(.5)
+            print(f"Here is your output matrix -->");
+            print();
+            print_array(print_matrix);
+            print();
+            print(f"State of the matrix --> {count%2}")
+            count += 1;
+            print();
+        summary(option);
+    elif option == 5:
+        count = 0;
+        while count < 25:
+            matrix = naive_solution(matrix);
+            print_matrix = new_matrix(matrix);
+            sleep(.75)
+            print(f"Here is your output matrix -->");
+            print();
+            print_array(print_matrix);
+            print();
+            count += 1;
+        summary(option);
+    else:
+        return 0
+
 
 if __name__ == "__main__":
-    # number of rows in the matrix
-    print(f"Please enter the number of rows in the input matrix")
-    N = int(input()); 
-    print(f"Please start to input each row, one by one. Ensure the number of elements in each row are same")
-    
-    #initialise the matrix
-    matrix = [];
-    count = 0;
-    while count < N:
-        matrix.append(list(map(int,input().split())))
-        count += 1;
-
-    output_matrix = naive_solution(matrix);
-    print(f"Here is your output matrix -->")
-    print_array(output_matrix)
-
-    print(f"Summary: In the input array of dimension {N} X {len(matrix[0])}, there are {count_elements(matrix)[0]} 1s and {count_elements(matrix)[1]} 0s \nand the output array if of dimension {len(output_matrix)} X {len(output_matrix[0])} and the total number of {count_elements(output_matrix)[0]} 1s and {count_elements(output_matrix)[1]} 0s")
+    option, matrix = starter_function();
+    driver_function(option, matrix);
