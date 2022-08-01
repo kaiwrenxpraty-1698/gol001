@@ -21,7 +21,8 @@ def starter_function():
     print(f"Here is your input matrix -->");
     print(); #added space
     matrix = input_matrix(option);
-    print_array(matrix);
+    print_matrix = new_matrix(matrix);
+    print_array(print_matrix);
     print()
 
     return option, matrix
@@ -41,6 +42,17 @@ def print_array(matrix):
     for idx in range(len(matrix)):
         print(matrix[idx])
 
+def new_matrix(matrix): #helper function to change the final printed matrix
+    output_matrix = [[] for i in range(len(matrix))]
+
+    for idx in range(len(matrix)):
+        for idx2 in range(len(matrix[0])):
+            if matrix[idx][idx2] == 0:
+                output_matrix[idx].append(" ");
+            else:
+                output_matrix[idx].append("A");
+    return output_matrix
+                
 #main function
 def naive_solution(matrix):
     
@@ -91,10 +103,11 @@ def driver_function(option, matrix):
         print()
 
     if option == 1 or option == 2:
-        output_matrix = naive_solution(matrix);
+        output_matrix = naive_solution(matrix)
+        print_matrix = new_matrix(output_matrix);
         print(f"Here is your output matrix -->");
         print();
-        print_array(output_matrix);
+        print_array(print_matrix);
         print();
         summary(option)
         
@@ -102,10 +115,11 @@ def driver_function(option, matrix):
         count = 0;
         while count < 10:
             matrix = naive_solution(matrix);
+            print_matrix = new_matrix(matrix);
             sleep(.5)
             print(f"Here is your output matrix -->");
             print();
-            print_array(matrix);
+            print_array(print_matrix);
             print();
             print(f"State of the matrix --> {count%2}")
             count += 1;
