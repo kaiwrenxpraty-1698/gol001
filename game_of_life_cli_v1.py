@@ -15,6 +15,8 @@ def input_matrix(option):
         matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
     elif option == 2:
         matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]]
+    elif option == 3:
+        matrix = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]
     return matrix
 
 def print_array(matrix):
@@ -53,9 +55,6 @@ def naive_solution(matrix):
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
 
-    print(f"Here is your label state matrix -->") # adding to compare the previous state
-    print_array(output_matrix)
-
     for i in range(m):
         for j in range(n):
             if matrix[i][j] == 1:
@@ -74,16 +73,16 @@ def naive_solution(matrix):
 
 if __name__ == "__main__":
     # number of rows in the matrix
-    print(f"Welcome to the Game of Life CLI Application")
+    print(f"Welcome to the Game of Life CLI Application");
     sleep(2);
-    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
-    print(f"To select the pattern you want to generate, type the option number from the list shown above");
+    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider");
+    print(f"To select the pattern you want to generate, type the option number from the list shown above -->");
+
+    print(f"Here is your input matrix -->");
     option = int(input());
 
     matrix = input_matrix(option);
-    for idx in range(len(matrix)):
-        print(matrix[idx]);
-    print();
+    print_array(matrix)
 
     output_matrix = naive_solution(matrix);
     print(f"Here is your output matrix -->");
