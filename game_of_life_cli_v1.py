@@ -75,20 +75,16 @@ def naive_solution(matrix):
 if __name__ == "__main__":
     # number of rows in the matrix
     print(f"Welcome to the Game of Life CLI Application")
-    sleep(2);1
+    sleep(2);
     print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
     print(f"To select the pattern you want to generate, type the option number from the list shown above");
     option = int(input());
-    # print(f"Please enter the number of rows in the input matrix")
-    # N = int(input()); 
-    
+
     matrix = input_matrix(option);
     for idx in range(len(matrix)):
-        print(matrix[idx])
-    print()
+        print(matrix[idx]);
+    print();
 
     output_matrix = naive_solution(matrix);
-    print(f"Here is your output matrix -->")
-    print_array(output_matrix)
-
-    # print(f"Summary: In the input array of dimension {N} X {len(matrix[0])}, there are {count_elements(matrix)[0]} 1s and {count_elements(matrix)[1]} 0s \nand the output array is of dimension {len(output_matrix)} X {len(output_matrix[0])} and the total number of {count_elements(output_matrix)[0]} 1s and {count_elements(output_matrix)[1]} 0s")
+    print(f"Here is your output matrix -->");
+    print_array(output_matrix);
