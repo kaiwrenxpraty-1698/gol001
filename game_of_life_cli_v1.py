@@ -8,7 +8,10 @@ Attempt Two: 01082022: Trying to implement standard examples:
 
 Main Objectives:
 1. Implement the standard examples.
-2. Improve the user experience for the end user.
+2. Improve the user experience for the end user
+    2.1 Make the printed matrix more readble
+    2.2 Provide clear instructions to the user for generating standard test cases.
+3. Make the code far more functional
 '''
 from time import sleep
 #helper function to print matrices
@@ -36,6 +39,11 @@ def input_matrix(option):
         matrix = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]];
     elif option == 4:
         matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0]];
+    elif option == 5:
+        matrix = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0]] + [[0 for i in range(10)] for j in range(7)];
+    else:
+        print(f"Sorry! Invalid input")
+        return 0
     return matrix
 
 def print_array(matrix):
@@ -62,9 +70,6 @@ def naive_solution(matrix):
     input_zeroes, input_ones = 0, 0;
     for i in range(m):
         for j in range(n):
-            # we access the cells of the matrix
-
-            # we will proceed to count the neighbours of each cell
             living_cells = 0;
             for x in range(max(i - 1, 0), min(i + 2, m)):
                 for y in range(max(j - 1, 0), min(j + 2, n)):
@@ -80,7 +85,6 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 1;   
                 else:
                     output_matrix[i][j] = 0;
-        
             else:
                 if output_matrix[i][j] == 3:
                     output_matrix[i][j] = 1;
@@ -100,6 +104,8 @@ def driver_function(option, matrix):
             print(f"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");
         elif option == 4:
             print(f"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");  
+        elif option == 5:
+             print(f"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix");  
         print()
 
     if option == 1 or option == 2:
@@ -125,6 +131,19 @@ def driver_function(option, matrix):
             count += 1;
             print();
         summary(option);
+    elif option == 5:
+        count = 0;
+        while count < 25:
+            matrix = naive_solution(matrix);
+            print_matrix = new_matrix(matrix);
+            sleep(.75)
+            print(f"Here is your output matrix -->");
+            print();
+            print_array(print_matrix);
+            print();
+            count += 1;
+        summary(option);
+
 
 if __name__ == "__main__":
     option, matrix = starter_function();
