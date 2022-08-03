@@ -3,6 +3,7 @@ Context:
 This code will display standard examples of Game of Life, based on the option selected
 '''
 from time import sleep
+from unittest import runner
 from click.testing import CliRunner
 import click
 
@@ -143,7 +144,15 @@ def start_application(option, matrix):
     else:
         return 0
 
+def test_start_application():
+    runner = CliRunner()
+    sample_matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+    result = runner.invoke(initiate_program, input = int(1))
+    assert not result.exception
+    assert result.output == 1, sample_matrix
+
 
 if __name__ == "__main__":
+    test_start_application()
     option, matrix = initiate_program();
     start_application(option, matrix);
