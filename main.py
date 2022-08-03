@@ -66,10 +66,9 @@ def mask_input_matrix(matrix):
 def implement_game_of_life(matrix):
     output_matrix = [[] for _ in range(len(matrix))]
     m, n = len(matrix), len(matrix[0])
-    input_zeroes, input_ones = 0, 0;
     for i in range(m):
         for j in range(n):
-            living_cells = 0;
+            living_cells = 0
             for x in range(max(i - 1, 0), min(i + 2, m)):
                 for y in range(max(j - 1, 0), min(j + 2, n)):
                     if x == i and y == j: 
