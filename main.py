@@ -6,22 +6,14 @@ from time import sleep
 from click.testing import CliRunner
 import click
 
-
-@click.command()
 def welcome_prompt():
-    click.echo(f'Welcome to the Game of Life CLI Application')
+    print(f'Welcome to the Game of Life CLI Application')
     sleep(0.5)
-    click.echo(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
+    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
 
-@click.command()
-@click.option('To select the pattern you want to generate, type the option number from the list shown above -->', prompt=True)
-def input_prompt(option):
-    return option
-
-
-def initiate_program(): 
+def initiate_program():
     welcome_prompt()
-    option = input_prompt()
+    option = click.prompt(f'To select the pattern you want to generate', type = int)
     print(f"Here is your input matrix -->")
     print()
     matrix = select_matrix_option(option)
