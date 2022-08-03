@@ -63,7 +63,7 @@ def mask_input_matrix(matrix):
     return output_matrix
                 
 
-def naive_solution(matrix):
+def implement_game_of_life(matrix):
     
     output_matrix = [[] for i in range(len(matrix))]
 
@@ -112,7 +112,7 @@ def driver_function(option, matrix):
         print()
 
     if option == 1 or option == 2:
-        output_matrix = naive_solution(matrix)
+        output_matrix = implement_game_of_life(matrix)
         print_matrix = mask_input_matrix(output_matrix);
         print(f"Here is your output matrix -->");
         print();
@@ -123,7 +123,7 @@ def driver_function(option, matrix):
     elif option == 3 or option == 4:
         count = 0;
         while count < 10:
-            matrix = naive_solution(matrix);
+            matrix = implement_game_of_life(matrix);
             print_matrix = mask_input_matrix(matrix);
             sleep(.5)
             print(f"Here is your output matrix -->");
@@ -137,7 +137,7 @@ def driver_function(option, matrix):
     elif option == 5:
         count = 0;
         while count < 25:
-            matrix = naive_solution(matrix);
+            matrix = implement_game_of_life(matrix);
             print_matrix = mask_input_matrix(matrix);
             sleep(.75)
             print(f"Here is your output matrix -->");
