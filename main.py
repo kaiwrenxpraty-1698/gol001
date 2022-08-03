@@ -13,12 +13,13 @@ def welcome_prompt():
 
 def initiate_program():
     welcome_prompt()
-    option = click.prompt(f'To select the pattern you want to generate', type = int)
+    option = click.prompt(f'To select the pattern you want to generate, input the option no. -->', type = int)
     print(f"Here is your input matrix -->")
     print()
     matrix = select_matrix_option(option)
     new_matrix = mask_input_matrix(matrix)
     print_matrix(new_matrix)
+    sleep(.75)
     print()
     return option, matrix
 
@@ -83,6 +84,10 @@ def implement_game_of_life(matrix):
                     
     return output_matrix
 
+def show_matrix(matrix):
+    for idx in range(len(matrix)):
+            print(matrix[idx])
+
 def start_application(option, matrix):
     def summary(option):
         print()
@@ -100,24 +105,24 @@ def start_application(option, matrix):
             return 0
         print()
 
-    if option == [1,2]:
+    if option == 1 or option == 2:
         output_matrix = implement_game_of_life(matrix)
-        print_matrix = mask_input_matrix(output_matrix)
+        masked_matrix = mask_input_matrix(output_matrix)
         print(f"Here is your output matrix -->");
         print();
-        print_matrix(print_matrix);
+        show_matrix(masked_matrix);
         print();
         summary(option)
         
-    elif option == [3,4]:
+    elif option == 3 or option == 4:
         count = 0;
         while count < 10:
             matrix = implement_game_of_life(matrix);
-            print_matrix = mask_input_matrix(matrix);
+            masked_matrix = mask_input_matrix(matrix);
             sleep(.5)
             print(f"Here is your output matrix -->");
             print();
-            print_matrix(print_matrix);
+            show_matrix(masked_matrix);
             print();
             print(f"State of the matrix --> {count%2}")
             count += 1;
@@ -127,11 +132,11 @@ def start_application(option, matrix):
         count = 0;
         while count < 25:
             matrix = implement_game_of_life(matrix);
-            print_matrix = mask_input_matrix(matrix);
+            masked_matrix = mask_input_matrix(matrix);
             sleep(.75)
             print(f"Here is your output matrix -->");
             print();
-            print_matrix(print_matrix);
+            show_matrix(masked_matrix);
             print();
             count += 1;
         summary(option);
