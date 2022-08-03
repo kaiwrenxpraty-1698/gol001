@@ -14,7 +14,7 @@ Main Objectives:
 3. Make the code far more functional
 '''
 from time import sleep
-#helper function to print matrices
+
 def initiate_program():
     print(f"Welcome to the Game of Life CLI Application");
     sleep(.5);
@@ -51,7 +51,7 @@ def print_matrix(matrix):
     for idx in range(len(matrix)):
         print(matrix[idx])
 
-def new_matrix(matrix): #helper function to change the final printed matrix
+def new_matrix(matrix): 
     output_matrix = [[] for i in range(len(matrix))]
 
     for idx in range(len(matrix)):
@@ -74,7 +74,7 @@ def naive_solution(matrix):
             living_cells = 0;
             for x in range(max(i - 1, 0), min(i + 2, m)):
                 for y in range(max(j - 1, 0), min(j + 2, n)):
-                    if x == i and y == j: # if the scanning matrix matches the cell; it simply skips the scan
+                    if x == i and y == j: 
                         continue
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
@@ -93,9 +93,9 @@ def naive_solution(matrix):
                     output_matrix[i][j] = 0;
                     
     return output_matrix
-# Adding driver function to animate Cases 3 & 4 from our SE Log Standard Examples:
+
 def driver_function(option, matrix):
-    def summary(option): #helper function to print summaries
+    def summary(option):
         print()
         if option == 1:
             print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.");
