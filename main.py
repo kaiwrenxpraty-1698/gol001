@@ -1,17 +1,6 @@
 '''
-Attempt Two: 01082022: Trying to implement standard examples:
-1. Block
-2. Bee-Hive
-3. Blinker
-4. Toad
-5. Glider
-
-Main Objectives:
-1. Implement the standard examples.
-2. Improve the user experience for the end user
-    2.1 Make the printed matrix more readble
-    2.2 Provide clear instructions to the user for generating standard test cases.
-3. Make the code far more functional
+Context:
+This code will display standard examples of Game of Life, based on the option selected
 '''
 from time import sleep
 
