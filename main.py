@@ -24,7 +24,7 @@ def initiate_program():
     print(f"Here is your input matrix -->");
     print();
     matrix = select_matrix_option(option);
-    new_matrix = display_matrix(matrix);
+    new_matrix = mask_input_matrix(matrix);
     print_matrix(new_matrix);
     print()
 
@@ -49,9 +49,9 @@ def select_matrix_option(option):
 
 def print_matrix(matrix):
     for idx in range(len(matrix)):
-        print(matrix[idx])
+            print(matrix[idx])
 
-def display_matrix(matrix): 
+def mask_input_matrix(matrix): 
     output_matrix = [[] for i in range(len(matrix))]
 
     for idx in range(len(matrix)):
@@ -113,7 +113,7 @@ def driver_function(option, matrix):
 
     if option == 1 or option == 2:
         output_matrix = naive_solution(matrix)
-        print_matrix = display_matrix(output_matrix);
+        print_matrix = mask_input_matrix(output_matrix);
         print(f"Here is your output matrix -->");
         print();
         print_matrix(print_matrix);
@@ -124,7 +124,7 @@ def driver_function(option, matrix):
         count = 0;
         while count < 10:
             matrix = naive_solution(matrix);
-            print_matrix = display_matrix(matrix);
+            print_matrix = mask_input_matrix(matrix);
             sleep(.5)
             print(f"Here is your output matrix -->");
             print();
@@ -138,7 +138,7 @@ def driver_function(option, matrix):
         count = 0;
         while count < 25:
             matrix = naive_solution(matrix);
-            print_matrix = display_matrix(matrix);
+            print_matrix = mask_input_matrix(matrix);
             sleep(.75)
             print(f"Here is your output matrix -->");
             print();
