@@ -64,6 +64,7 @@ def mask_input_matrix(matrix):
                 
 
 def implement_game_of_life(matrix):
+    # sourcery skip: reintroduce-else, remove-redundant-continue, sum-comprehension, use-itertools-product
     output_matrix = [[] for _ in range(len(matrix))]
     m, n = len(matrix), len(matrix[0])
     for i in range(m):
@@ -71,7 +72,7 @@ def implement_game_of_life(matrix):
             living_cells = 0
             for x in range(max(i - 1, 0), min(i + 2, m)):
                 for y in range(max(j - 1, 0), min(j + 2, n)):
-                    if x == i and y == j: 
+                    if x == i and y == j:
                         continue
                     living_cells += matrix[x][y] % 2;        
             output_matrix[i].append(living_cells)
