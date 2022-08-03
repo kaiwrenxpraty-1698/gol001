@@ -23,14 +23,14 @@ def initiate_program():
     option = int(input());
     print(f"Here is your input matrix -->");
     print(); #added space
-    matrix = input_matrix(option);
+    matrix = select_matrix(option);
     print_matrix = new_matrix(matrix);
     print_array(print_matrix);
     print()
 
     return option, matrix
 
-def input_matrix(option):
+def select_matrix(option):
     if option == 1:
         matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]];
     elif option == 2:
@@ -62,7 +62,7 @@ def new_matrix(matrix): #helper function to change the final printed matrix
                 output_matrix[idx].append("A");
     return output_matrix
                 
-#main function
+
 def naive_solution(matrix):
     
     output_matrix = [[] for i in range(len(matrix))]
