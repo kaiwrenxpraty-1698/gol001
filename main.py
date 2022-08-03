@@ -15,7 +15,7 @@ Main Objectives:
 '''
 from time import sleep
 #helper function to print matrices
-def starter_function():
+def initiate_program():
     print(f"Welcome to the Game of Life CLI Application");
     sleep(.5);
     print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider");
@@ -151,5 +151,5 @@ def driver_function(option, matrix):
 
 
 if __name__ == "__main__":
-    option, matrix = starter_function();
+    option, matrix = initiate_program();
     driver_function(option, matrix);
