@@ -95,7 +95,7 @@ def implement_game_of_life(matrix):
     return output_matrix
 
 def driver_function(option, matrix):
-    def summary(option):
+    def display_summary(option):
         print()
         if option == 1:
             print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.");
@@ -118,7 +118,7 @@ def driver_function(option, matrix):
         print();
         print_matrix(print_matrix);
         print();
-        summary(option)
+        display_summary(option)
         
     elif option == 3 or option == 4:
         count = 0;
@@ -133,7 +133,7 @@ def driver_function(option, matrix):
             print(f"State of the matrix --> {count%2}")
             count += 1;
             print();
-        summary(option);
+        display_summary(option);
     elif option == 5:
         count = 0;
         while count < 25:
@@ -145,7 +145,7 @@ def driver_function(option, matrix):
             print_matrix(print_matrix);
             print();
             count += 1;
-        summary(option);
+        display_summary(option);
     else:
         return 0
 
