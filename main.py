@@ -16,23 +16,24 @@ Main Objectives:
 from time import sleep
 
 def initiate_program():
-    print(f"Welcome to the Game of Life CLI Application");
-    sleep(.5);
-    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider");
-    print(f"To select the pattern you want to generate, type the option number from the list shown above -->");
-    option = int(input());
-    print(f"Here is your input matrix -->");
-    print();
-    matrix = select_matrix_option(option);
-    new_matrix = mask_input_matrix(matrix);
-    print_matrix(new_matrix);
-    print()
+    print(f'Welcome to the Game of Life CLI Application')
+    sleep(0.5)
+    print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
 
+    print(f"To select the pattern you want to generate, type the option number from the list shown above -->")
+
+    option = int(input())
+    print(f"Here is your input matrix -->")
+    print()
+    matrix = select_matrix_option(option)
+    new_matrix = mask_input_matrix(matrix)
+    print_matrix(new_matrix)
+    print()
     return option, matrix
 
 def select_matrix_option(option):
     if option == 1:
-        matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]];
+        matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
     elif option == 2:
         matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]];
     elif option == 3:
@@ -52,20 +53,19 @@ def print_matrix(matrix):
             print(matrix[idx])
 
 def mask_input_matrix(matrix): 
-    output_matrix = [[] for i in range(len(matrix))]
+    output_matrix = [[] for _ in range(len(matrix))]
 
     for idx in range(len(matrix)):
         for idx2 in range(len(matrix[0])):
             if matrix[idx][idx2] == 0:
-                output_matrix[idx].append(" ");
+                output_matrix[idx].append(" ")
             else:
-                output_matrix[idx].append("A");
+                output_matrix[idx].append("A")
     return output_matrix
                 
 
 def implement_game_of_life(matrix):
-    
-    output_matrix = [[] for i in range(len(matrix))]
+    output_matrix = [[] for _ in range(len(matrix))]
 
     m, n = len(matrix), len(matrix[0]);
     input_zeroes, input_ones = 0, 0;
@@ -95,12 +95,12 @@ def implement_game_of_life(matrix):
     return output_matrix
 
 def driver_function(option, matrix):
-    def display_summary(option):
+    def summary(option):
         print()
         if option == 1:
-            print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.");
+            print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.")
         elif option == 2:
-            print(f"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.");
+            print(f"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.")
         elif option == 3:
             print(f"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");
         elif option == 4:
@@ -111,16 +111,16 @@ def driver_function(option, matrix):
             return 0
         print()
 
-    if option == 1 or option == 2:
+    if option == [1,2]:
         output_matrix = implement_game_of_life(matrix)
-        print_matrix = mask_input_matrix(output_matrix);
+        print_matrix = mask_input_matrix(output_matrix)
         print(f"Here is your output matrix -->");
         print();
         print_matrix(print_matrix);
         print();
-        display_summary(option)
+        summary(option)
         
-    elif option == 3 or option == 4:
+    elif option == [3,4]:
         count = 0;
         while count < 10:
             matrix = implement_game_of_life(matrix);
@@ -133,7 +133,7 @@ def driver_function(option, matrix):
             print(f"State of the matrix --> {count%2}")
             count += 1;
             print();
-        display_summary(option);
+        summary(option);
     elif option == 5:
         count = 0;
         while count < 25:
@@ -145,7 +145,7 @@ def driver_function(option, matrix):
             print_matrix(print_matrix);
             print();
             count += 1;
-        display_summary(option);
+        summary(option);
     else:
         return 0
 
