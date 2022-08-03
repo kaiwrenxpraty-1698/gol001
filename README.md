@@ -1,12 +1,29 @@
 # Conway's Game of Life
 
-## Objective of this repo
+##  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### What is Conway's Game of Life?
 
-[Sourced from Wikipedia](/https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
-
-Disclaimer: I am adding the what I understand from the wiki article over here.
+[Sourced from Wikipedia](/https://en.wikiedia.org/wiki/Conway%27s_Game_of_Life)
 
 1. The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, live or dead (or populated and unpopulated, respectively). 
 
@@ -26,21 +43,3 @@ After trying to come up with a naive approach and re-reading the wikipedia artic
 1. Any live cell with two or three live neighbours survives.
 2. Any dead cell with three live neighbours becomes a live cell.
 3. All other live cells die in the next generation. Similarly, all other dead cells stay dead.
-
-
-### Initial Execution Steps:
-
-After going through the [SE Log](https://docs.google.com/document/d/1jIExgMhHwKZAXokPp7g4wO5mq7UYwO-M9sqCkTQf0Lk/edit#heading=h.n6urvrl4qa3l), here is how I am planning to approach this.
-
-NOTE: This is based on the preliminary assessment, that I am making based on my understanding so far.
-We have two broad sections to the problem statement.
-
-1. Getting the logic right!
-In this section, we will try to implement the algorithm.
-As I have mentioned above, this is a 2D Matrix problem from a pure Data Structures & Algorithms perspective.
-
-2. Building the CLI application.
-This is an interesting part of the project which I will be trying out for the first time. Based on the intial assessment of the problem statement, here are the tools and libraries that I will be using.
-
-1. argparser: python library to take input from the user through the console. 
-2. Docker: to deliver the CLI application in form of individual containers.
