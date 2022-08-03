@@ -2,7 +2,7 @@
 <h1 align="center">Conway's Game of Life</h1>
 <br />
 Python code to run a few standard examples of Conway's Game of Life
-<div>
+</div>
 
 ***
 
