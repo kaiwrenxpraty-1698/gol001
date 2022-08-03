@@ -25,7 +25,7 @@ def initiate_program():
     print(); #added space
     matrix = select_matrix(option);
     print_matrix = new_matrix(matrix);
-    print_array(print_matrix);
+    print_matrix(print_matrix);
     print()
 
     return option, matrix
@@ -47,7 +47,7 @@ def select_matrix(option):
         exit();
     return matrix
 
-def print_array(matrix):
+def print_matrix(matrix):
     for idx in range(len(matrix)):
         print(matrix[idx])
 
@@ -116,7 +116,7 @@ def driver_function(option, matrix):
         print_matrix = new_matrix(output_matrix);
         print(f"Here is your output matrix -->");
         print();
-        print_array(print_matrix);
+        print_matrix(print_matrix);
         print();
         summary(option)
         
@@ -128,7 +128,7 @@ def driver_function(option, matrix):
             sleep(.5)
             print(f"Here is your output matrix -->");
             print();
-            print_array(print_matrix);
+            print_matrix(print_matrix);
             print();
             print(f"State of the matrix --> {count%2}")
             count += 1;
@@ -142,7 +142,7 @@ def driver_function(option, matrix):
             sleep(.75)
             print(f"Here is your output matrix -->");
             print();
-            print_array(print_matrix);
+            print_matrix(print_matrix);
             print();
             count += 1;
         summary(option);
