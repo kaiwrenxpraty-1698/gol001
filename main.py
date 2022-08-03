@@ -35,13 +35,13 @@ def select_matrix_option(option):
     if option == 1:
         matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
     elif option == 2:
-        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]];
+        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0]]
     elif option == 3:
-        matrix = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]];
+        matrix = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]
     elif option == 4:
-        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0]];
+        matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 1, 0, 0, 1, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
     elif option == 5:
-        matrix = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0]] + [[0 for i in range(10)] for j in range(7)];
+        matrix = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0, 0, 0]] + [[0 for _ in range(10)] for _ in range(7)]
     else:
         print(f"Sorry! Invalid input")
         print()
@@ -54,7 +54,6 @@ def print_matrix(matrix):
 
 def mask_input_matrix(matrix): 
     output_matrix = [[] for _ in range(len(matrix))]
-
     for idx in range(len(matrix)):
         for idx2 in range(len(matrix[0])):
             if matrix[idx][idx2] == 0:
@@ -66,8 +65,7 @@ def mask_input_matrix(matrix):
 
 def implement_game_of_life(matrix):
     output_matrix = [[] for _ in range(len(matrix))]
-
-    m, n = len(matrix), len(matrix[0]);
+    m, n = len(matrix), len(matrix[0])
     input_zeroes, input_ones = 0, 0;
     for i in range(m):
         for j in range(n):
