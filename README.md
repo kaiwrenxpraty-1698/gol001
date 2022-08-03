@@ -6,7 +6,11 @@ Python code to run a few standard examples of Conway's Game of Life
 
 ***
 
-
+### Usage
+```
+python3 main.py
+```
+***
 
 ### What is Conway's Game of Life?
 
