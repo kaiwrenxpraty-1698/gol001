@@ -64,7 +64,7 @@ def mask_input_matrix(matrix):
                 
 
 def implement_game_of_life(matrix):
-    # sourcery skip: reintroduce-else, remove-redundant-continue, sum-comprehension, use-itertools-product
+    # sourcery skip: assign-if-exp, merge-comparisons, merge-else-if-into-elif, reintroduce-else, remove-redundant-continue, sum-comprehension, use-itertools-product
     output_matrix = [[] for _ in range(len(matrix))]
     m, n = len(matrix), len(matrix[0])
     for i in range(m):
@@ -92,7 +92,7 @@ def implement_game_of_life(matrix):
                     
     return output_matrix
 
-def driver_function(option, matrix):
+def start_application(option, matrix):
     def summary(option):
         print()
         if option == 1:
@@ -150,4 +150,4 @@ def driver_function(option, matrix):
 
 if __name__ == "__main__":
     option, matrix = initiate_program();
-    driver_function(option, matrix);
+    start_application(option, matrix);
