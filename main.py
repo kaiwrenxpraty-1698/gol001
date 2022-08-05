@@ -5,8 +5,17 @@ This code will display standard examples of Game of Life, based on the option se
 from time import sleep
 import argparse
 
+arg_desc = '''\
+    'Welcome to the Game of Life. 
+    Please select the option number corresponding to the pattern, you will like to print: 
+    1. Block 
+    2. Bee-Hive 
+    3. Blinker 
+    4. Toad 
+    5. Glider
+'''
 def initiate_program():
-    parser = argparse.ArgumentParser(description = f'Welcome to the Game of Life. \nPlease select the option, you will like to print: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider')
+    parser = argparse.ArgumentParser(formatter_class = argparse.RawDescriptionHelpFormatter, description = arg_desc)
     parser.add_argument('-o', '--option', type = int, metavar = '', required = True, help = f'Option corresponding to the pattern in the help description')
     args = parser.parse_args()
 
