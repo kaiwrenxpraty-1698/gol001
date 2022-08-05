@@ -14,6 +14,8 @@ arg_desc = '''\
     4. Toad 
     5. Glider
 '''
+
+
 def initiate_program():
     parser = argparse.ArgumentParser(formatter_class = argparse.RawDescriptionHelpFormatter, description = arg_desc)
     parser.add_argument('-o', '--option', type = int, metavar = '', required = True, help = f'Option corresponding to the pattern in the help description')
@@ -28,6 +30,7 @@ def initiate_program():
     sleep(.75)
     print()
     return option, matrix
+
 
 def select_matrix_option(option):
     if option == 1:
@@ -46,9 +49,11 @@ def select_matrix_option(option):
         exit()
     return matrix
 
+
 def print_matrix(matrix):
     for idx in range(len(matrix)):
             print(matrix[idx])
+
 
 def mask_input_matrix(matrix): 
     output_matrix = [[] for _ in range(len(matrix))]
@@ -89,9 +94,11 @@ def implement_game_of_life(matrix):
                     
     return output_matrix
 
+
 def show_matrix(matrix):
     for idx in range(len(matrix)):
             print(matrix[idx])
+
 
 def start_application(option, matrix):
     def summary(option):
@@ -117,8 +124,7 @@ def start_application(option, matrix):
         print();
         show_matrix(masked_matrix);
         print();
-        summary(option)
-        
+        summary(option)    
     elif option == 3 or option == 4:
         count = 0;
         while count < 10:
@@ -148,6 +154,11 @@ def start_application(option, matrix):
     else:
         return 0
 
-if __name__ == "__main__":
+
+def main():
     option, matrix = initiate_program();
     start_application(option, matrix);
+
+
+if __name__ == "__main__":
+    main()
