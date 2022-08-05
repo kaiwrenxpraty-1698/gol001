@@ -16,7 +16,7 @@ Use the below command to run the application and display patterns for the chosen
 ```
 python3 main.py -o option_number
 ```
-Replace option number with the number corresponding to the option in the `help` command.
+Replace option number with the number corresponding to the pattern in the `help` command.
 ***
 
 ### What is Conway's Game of Life?
