@@ -9,7 +9,7 @@ Python code to run a few standard examples of Conway's Game of Life
 ### Usage
 Use the below command to know about the application and the how to use it.
 ```
-python3 main.py -h
+python3 main.py -help
 ```
 Use the below command to run the application and display patterns for the chosen option
 
