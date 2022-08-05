@@ -10,11 +10,11 @@ def initiate_program():
     parser.add_argument('-o', '--option', type = int, metavar = '', required = True, help = f'Option corresponding to the pattern in the help description')
     args = parser.parse_args()
 
-    print(f"Here is your input matrix -->")
-    print()
     option = args.option
     matrix = select_matrix_option(option)
     new_matrix = mask_input_matrix(matrix)
+    print(f"Holla! You have chosen option number {option}, this is the initial state of the grid -->")
+    print()
     print_matrix(new_matrix)
     sleep(.75)
     print()
