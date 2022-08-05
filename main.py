@@ -3,9 +3,10 @@ Context:
 This code will display standard examples of Game of Life, based on the option selected
 '''
 from time import sleep
-from unittest import runner
-from click.testing import CliRunner
-import click
+import argparse
+
+parser = argparse.ArgumentParser(description = f'Welcome to the program; this is a test run')
+parser.add_argument('-r', '--option', type=int, metavar='', required=True, help='this is a test')
 
 def welcome_prompt():
     print(f'Welcome to the Game of Life CLI Application')
@@ -14,7 +15,7 @@ def welcome_prompt():
 
 def initiate_program():
     welcome_prompt()
-    option = click.prompt(f'To select the pattern you want to generate, input the option no. -->', type = int)
+    # option = click.prompt(f'To select the pattern you want to generate, input the option no. -->', type = int)
     print(f"Here is your input matrix -->")
     print()
     matrix = select_matrix_option(option)
@@ -144,15 +145,15 @@ def start_application(option, matrix):
     else:
         return 0
 
-def test_start_application():
-    runner = CliRunner()
-    sample_matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
-    result = runner.invoke(initiate_program, input = int(1))
-    assert not result.exception
-    assert result.output == 1, sample_matrix
+# def test_start_application():
+#     runner = CliRunner()
+#     sample_matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+#     result = runner.invoke(initiate_program, input = int(1))
+#     assert not result.exception
+#     assert result.output == 1, sample_matrix
 
 
 if __name__ == "__main__":
-    test_start_application()
+    # test_start_application()
     option, matrix = initiate_program();
     start_application(option, matrix);
