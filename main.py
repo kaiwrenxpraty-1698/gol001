@@ -53,7 +53,6 @@ def mask_input_matrix(matrix):
                 
 
 def implement_game_of_life(matrix):
-    # sourcery skip: assign-if-exp, merge-comparisons, merge-else-if-into-elif, reintroduce-else, remove-redundant-continue, sum-comprehension, use-itertools-product
     output_matrix = [[] for _ in range(len(matrix))]
     m, n = len(matrix), len(matrix[0])
     for i in range(m):
@@ -140,15 +139,6 @@ def start_application(option, matrix):
     else:
         return 0
 
-# def test_start_application():
-#     runner = CliRunner()
-#     sample_matrix = [[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
-#     result = runner.invoke(initiate_program, input = int(1))
-#     assert not result.exception
-#     assert result.output == 1, sample_matrix
-
-
 if __name__ == "__main__":
-    # test_start_application()
     option, matrix = initiate_program();
     start_application(option, matrix);
