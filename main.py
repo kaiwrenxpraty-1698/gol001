@@ -5,10 +5,10 @@ This code will display standard examples of Game of Life, based on the option se
 from time import sleep
 import argparse
 
-def parser_function():
-    parser = argparse.ArgumentParser(description = f'Welcome to the program; this is a test run')
-    parser.add_argument('-r', '--option', type=int, metavar='', required=True, help='this is a test')
-    args = parser.parse_args()
+
+parser = argparse.ArgumentParser(description = f'Welcome to the program; this is a test run')
+parser.add_argument('-r', '--option', type=int, metavar='', required=True, help='this is a test')
+args = parser.parse_args()
 
 def welcome_prompt():
     print(f'Welcome to the Game of Life CLI Application')
@@ -16,10 +16,11 @@ def welcome_prompt():
     print(f"Here is the list of patterns, you can generate: \n1. Block \n2. Bee-Hive \n3. Blinker \n4. Toad \n5. Glider")
 
 def initiate_program():
-    welcome_prompt()
+    # welcome_prompt()
     # option = click.prompt(f'To select the pattern you want to generate, input the option no. -->', type = int)
     print(f"Here is your input matrix -->")
     print()
+    option = args.option
     matrix = select_matrix_option(option)
     new_matrix = mask_input_matrix(matrix)
     print_matrix(new_matrix)
