@@ -5,8 +5,10 @@ This code will display standard examples of Game of Life, based on the option se
 from time import sleep
 import argparse
 
-parser = argparse.ArgumentParser(description = f'Welcome to the program; this is a test run')
-parser.add_argument('-r', '--option', type=int, metavar='', required=True, help='this is a test')
+def parser_function():
+    parser = argparse.ArgumentParser(description = f'Welcome to the program; this is a test run')
+    parser.add_argument('-r', '--option', type=int, metavar='', required=True, help='this is a test')
+    args = parser.parse_args()
 
 def welcome_prompt():
     print(f'Welcome to the Game of Life CLI Application')
