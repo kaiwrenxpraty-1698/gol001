@@ -37,7 +37,6 @@ key point: the pattern keeps gliding over the matrix''',
     }
 }
 
-
 def initiate_program():
     option = sys.argv[1]
     if option != "help":
@@ -46,7 +45,6 @@ def initiate_program():
     else:
         print(summary_dict[option])
         return option
-
 
 def select_matrix_option(option):
     live_cell, dead_cell = 1, 0
@@ -67,11 +65,9 @@ def select_matrix_option(option):
         exit()
     return matrix
 
-
 def print_matrix(matrix):
     for idx in range(len(matrix)):
             print(matrix[idx])
-
 
 def mask_input_matrix(matrix): 
     output_matrix = [[] for _ in range(len(matrix))]
@@ -83,7 +79,6 @@ def mask_input_matrix(matrix):
                 output_matrix[idx].append("ALIVE")
     return output_matrix
                 
-
 def implement_game_of_life(matrix):
     output_matrix = [[] for _ in range(len(matrix))]
     m, n = len(matrix), len(matrix[0])
@@ -111,7 +106,6 @@ def implement_game_of_life(matrix):
                     output_matrix[i][j] = 0
                     
     return output_matrix
-
 
 def start_application(option):
     def summary(option):
@@ -160,7 +154,6 @@ def start_application(option):
 def main():
     option = initiate_program()
     start_application(option)
-
 
 if __name__ == "__main__":
     main()
