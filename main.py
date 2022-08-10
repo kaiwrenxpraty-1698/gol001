@@ -101,11 +101,6 @@ def implement_game_of_life(matrix):
     return output_matrix
 
 
-def show_matrix(matrix):
-    for idx in range(len(matrix)):
-            print(matrix[idx])
-
-
 def start_application(option):
     def summary(option):
         print()
@@ -129,7 +124,7 @@ def start_application(option):
         masked_matrix = mask_input_matrix(output_matrix)
         print(f"Here is your output matrix -->");
         print();
-        show_matrix(masked_matrix);
+        print_matrix(masked_matrix);
         print();
         summary(option)    
     elif option == "3" or option == "4":
@@ -141,7 +136,7 @@ def start_application(option):
             sleep(.5)
             print(f"Here is your output matrix -->");
             print();
-            show_matrix(masked_matrix);
+            print_matrix(masked_matrix);
             print();
             print(f"State of the matrix --> {count%2}")
             count += 1;
@@ -156,7 +151,7 @@ def start_application(option):
             sleep(.75)
             print(f"Here is your output matrix -->");
             print();
-            show_matrix(masked_matrix);
+            print_matrix(masked_matrix);
             print();
             count += 1;
         summary(option);
