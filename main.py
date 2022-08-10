@@ -17,14 +17,13 @@ arg_desc = '''\
 
 def initiate_program():
     option = sys.argv[1]
-    matrix = select_matrix_option(option)
-    new_matrix = mask_input_matrix(matrix)
-    print(f"Holla! You have chosen option number {option}, this is the initial state of the grid -->")
-    print()
-    print_matrix(new_matrix)
-    sleep(.75)
-    print()
-    return option, matrix
+    if option != "help":
+        print(f"Holla! You have chosen option number {option}, this is the initial state of the grid -->")
+        print_matrix(mask_input_matrix(select_matrix_option(option)))
+        return option
+    else:
+        print(arg_desc)
+        return option
 
 
 def select_matrix_option(option):
@@ -98,7 +97,7 @@ def show_matrix(matrix):
             print(matrix[idx])
 
 
-def start_application(option, matrix):
+def start_application(option):
     def summary(option):
         print()
         if option == "1":
@@ -116,6 +115,7 @@ def start_application(option, matrix):
         print()
 
     if option == "1" or option == "2":
+        matrix = select_matrix_option(option)
         output_matrix = implement_game_of_life(matrix)
         masked_matrix = mask_input_matrix(output_matrix)
         print(f"Here is your output matrix -->");
@@ -124,6 +124,7 @@ def start_application(option, matrix):
         print();
         summary(option)    
     elif option == "3" or option == "4":
+        matrix = select_matrix_option(option)
         count = 0;
         while count < 10:
             matrix = implement_game_of_life(matrix);
@@ -138,6 +139,7 @@ def start_application(option, matrix):
             print();
         summary(option);
     elif option == "5":
+        matrix = select_matrix_option(option)
         count = 0;
         while count < 25:
             matrix = implement_game_of_life(matrix);
@@ -154,8 +156,8 @@ def start_application(option, matrix):
 
 
 def main():
-    option, matrix = initiate_program();
-    start_application(option, matrix);
+    option = initiate_program();
+    start_application(option);
 
 
 if __name__ == "__main__":
