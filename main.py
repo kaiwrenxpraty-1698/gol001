@@ -60,7 +60,7 @@ def mask_input_matrix(matrix):
             if matrix[idx][idx2] == 0:
                 output_matrix[idx].append(" ")
             else:
-                output_matrix[idx].append("alive")
+                output_matrix[idx].append("ALIVE")
     return output_matrix
                 
 
