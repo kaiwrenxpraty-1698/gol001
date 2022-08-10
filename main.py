@@ -15,9 +15,8 @@ arg_desc = '''\
     5. Glider
 '''
 
-
 def initiate_program():
-    option = int(sys.argv[1])
+    option = sys.argv[1]
     matrix = select_matrix_option(option)
     new_matrix = mask_input_matrix(matrix)
     print(f"Holla! You have chosen option number {option}, this is the initial state of the grid -->")
@@ -30,16 +29,18 @@ def initiate_program():
 
 def select_matrix_option(option):
     live_cell, dead_cell = 1, 0
-    if option == 1:
+    if option == "1":
         matrix = [[dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, live_cell, live_cell, dead_cell], [dead_cell, live_cell, live_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell]]
-    elif option == 2:
+    elif option == "2":
         matrix = [[dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]]
-    elif option == 3:
+    elif option == "3":
         matrix = [[dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]]
-    elif option == 4:
+    elif option == "4":
         matrix = [[dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]]
-    elif option == 5:
+    elif option == "5":
         matrix = [[dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [live_cell, live_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]] + [[dead_cell for _ in range(10)] for _ in range(7)]
+    elif option == "help":
+            print(arg_desc)
     else:
         print(f"Sorry! Invalid input")
         print()
@@ -59,7 +60,7 @@ def mask_input_matrix(matrix):
             if matrix[idx][idx2] == 0:
                 output_matrix[idx].append(" ")
             else:
-                output_matrix[idx].append("A")
+                output_matrix[idx].append("alive")
     return output_matrix
                 
 
@@ -100,21 +101,21 @@ def show_matrix(matrix):
 def start_application(option, matrix):
     def summary(option):
         print()
-        if option == 1:
+        if option == "1":
             print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.")
-        elif option == 2:
+        elif option == "2":
             print(f"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.")
-        elif option == 3:
+        elif option == "3":
             print(f"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");
-        elif option == 4:
+        elif option == "4":
             print(f"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");  
-        elif option == 5:
+        elif option == "5":
              print(f"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix"); 
         else:
             return 0
         print()
 
-    if option == 1 or option == 2:
+    if option == "1" or option == "2":
         output_matrix = implement_game_of_life(matrix)
         masked_matrix = mask_input_matrix(output_matrix)
         print(f"Here is your output matrix -->");
@@ -122,7 +123,7 @@ def start_application(option, matrix):
         show_matrix(masked_matrix);
         print();
         summary(option)    
-    elif option == 3 or option == 4:
+    elif option == "3" or option == "4":
         count = 0;
         while count < 10:
             matrix = implement_game_of_life(matrix);
@@ -136,7 +137,7 @@ def start_application(option, matrix):
             count += 1;
             print();
         summary(option);
-    elif option == 5:
+    elif option == "5":
         count = 0;
         while count < 25:
             matrix = implement_game_of_life(matrix);
