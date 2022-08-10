@@ -15,23 +15,23 @@ arg_desc = '''\
     5. Glider
 '''
 
-summary ={
+summary_dict ={
     '1' :"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.",
     '2':"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.",
     '3':"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.",
     '4':"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.",
     '5':"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix",
-    'help': arg_desc
+    'help': arg_desc,
+    'error':'Sorry this option is not valid, please add help argument to know how the tool works'
 }
 
 def initiate_program():
     option = sys.argv[1]
     if option != "help":
-        print(f"Holla! You have chosen option number {option}, this is the initial state of the grid -->")
         print_matrix(mask_input_matrix(select_matrix_option(option)))
         return option
     else:
-        print(summary[option])
+        print(summary_dict[option])
         return option
 
 
@@ -50,8 +50,7 @@ def select_matrix_option(option):
     elif option == "help":
             print(arg_desc)
     else:
-        print(f"Sorry! Invalid input")
-        print()
+        print(summary_dict['error'])
         exit()
     return matrix
 
@@ -104,18 +103,7 @@ def implement_game_of_life(matrix):
 def start_application(option):
     def summary(option):
         print()
-        if option == "1":
-            print(f"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.")
-        elif option == "2":
-            print(f"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.")
-        elif option == "3":
-            print(f"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");
-        elif option == "4":
-            print(f"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.");  
-        elif option == "5":
-             print(f"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix"); 
-        else:
-            return 0
+        print(summary_dict[option])
         print()
 
     if option == "1" or option == "2":
@@ -157,7 +145,6 @@ def start_application(option):
         summary(option);
     else:
         return 0
-
 
 def main():
     option = initiate_program();
