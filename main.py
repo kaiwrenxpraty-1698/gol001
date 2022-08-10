@@ -15,6 +15,15 @@ arg_desc = '''\
     5. Glider
 '''
 
+summary ={
+    '1' :"This is the most common still life pattern of Game of Life: Block; the state of matrix is identical to the input matrix.",
+    '2':"This is the another common still life pattern of Game of Life: Bee-hive; the state of matrix is identical to the input matrix.",
+    '3':"This is a popular oscillator pattern of Game of Life: Blinker; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.",
+    '4':"This is a popular oscillator pattern of Game of Life: Toad; the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.",
+    '5':"This is the most popular Spaceships pattern of Game of Life: Glider; the pattern keeps gliding over the matrix",
+    'help': arg_desc
+}
+
 def initiate_program():
     option = sys.argv[1]
     if option != "help":
@@ -22,7 +31,7 @@ def initiate_program():
         print_matrix(mask_input_matrix(select_matrix_option(option)))
         return option
     else:
-        print(arg_desc)
+        print(summary[option])
         return option
 
 
