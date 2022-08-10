@@ -3,7 +3,7 @@ Context:
 This code will display standard examples of Game of Life, based on the option selected
 '''
 from time import sleep
-import argparse
+import sys
 
 arg_desc = '''\
     'Welcome to the Game of Life. 
@@ -17,11 +17,7 @@ arg_desc = '''\
 
 
 def initiate_program():
-    parser = argparse.ArgumentParser(formatter_class = argparse.RawDescriptionHelpFormatter, description = arg_desc)
-    parser.add_argument('-o', '--option', type = int, metavar = '', required = True, help = f'Option corresponding to the pattern in the help description')
-    args = parser.parse_args()
-
-    option = args.option
+    option = int(sys.argv[1])
     matrix = select_matrix_option(option)
     new_matrix = mask_input_matrix(matrix)
     print(f"Holla! You have chosen option number {option}, this is the initial state of the grid -->")
