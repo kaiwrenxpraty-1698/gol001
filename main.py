@@ -16,13 +16,25 @@ arg_desc = '''\
 '''
 
 summary_dict ={
-    '1' :"This is the most common still life pattern of Game of Life: Block the state of matrix is identical to the input matrix.",
-    '2':"This is the another common still life pattern of Game of Life: Bee-hive the state of matrix is identical to the input matrix.",
-    '3':"This is a popular oscillator pattern of Game of Life: Blinker the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.",
-    '4':"This is a popular oscillator pattern of Game of Life: Toad the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.",
-    '5':"This is the most popular Spaceships pattern of Game of Life: Glider the pattern keeps gliding over the matrix",
+    '1' :'''This is the most common still life pattern of Game of Life: Block
+key point: the state of matrix is identical to the input matrix.''',
+    '2':'''This is the another common still life pattern of Game of Life: Bee-hive 
+key point: the state of matrix is identical to the input matrix.''',
+    '3':'''This is a popular oscillator pattern of Game of Life: Blinker 
+key point: the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.''',
+    '4':'''This is a popular oscillator pattern of Game of Life: Toad 
+key point: the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.''',
+    '5':'''This is the most popular Spaceships pattern of Game of Life: Glider 
+key point: the pattern keeps gliding over the matrix''',
     'help': arg_desc,
-    'error':'Sorry this option is not valid, please add help argument to know how the tool works'
+    'error':'Sorry this option is not valid, please add help argument to know how the tool works',
+    'mapping':{
+        '1': 'Block',
+        '2': 'Bee-Hive',
+        '3': 'Blinker',
+        '4': 'Toad',
+        '5': 'Glider'
+    }
 }
 
 
@@ -104,8 +116,13 @@ def implement_game_of_life(matrix):
 def start_application(option):
     def summary(option):
         print(summary_dict[option])
+    
+    def introduction(option):
+        name_of_pattern = summary_dict['mapping'][option]
+        print(f'Welcome to the Game of Life; So glad that you have chosen {name_of_pattern}')
 
     if option == "1" or option == "2":
+        introduction(option)
         matrix = select_matrix_option(option)
         output_matrix = implement_game_of_life(matrix)
         masked_matrix = mask_input_matrix(output_matrix)
