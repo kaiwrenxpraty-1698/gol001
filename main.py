@@ -37,6 +37,13 @@ key point: the pattern keeps gliding over the matrix''',
     }
 }
 
+def summary(option):
+        print(summary_dict[option])
+    
+def introduction(option):
+    name_of_pattern = summary_dict['mapping'][option]
+    print(f'Welcome to the Game of Life; So glad that you have chosen {name_of_pattern}')
+
 def initiate_program():
     option = sys.argv[1]
     if option != "help":
@@ -108,12 +115,7 @@ def implement_game_of_life(matrix):
     return output_matrix
 
 def start_application(option):
-    def summary(option):
-        print(summary_dict[option])
-    
-    def introduction(option):
-        name_of_pattern = summary_dict['mapping'][option]
-        print(f'Welcome to the Game of Life; So glad that you have chosen {name_of_pattern}')
+
 
     if option == "1" or option == "2":
         introduction(option)
