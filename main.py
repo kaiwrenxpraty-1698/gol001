@@ -58,14 +58,6 @@ def mask_input_matrix(matrix):
                 output_matrix[idx].append("ALIVE")
     return output_matrix
 
-def initiate_program():
-    option = sys.argv[1]
-    if option != "help":
-        return option
-    else:
-        print(summary_dict[option])
-        return option
-
 def select_from_matrix_option(option):
     live_cell, dead_cell = 1, 0
     if option == "1":
@@ -146,7 +138,7 @@ def start_application(option):
         return 0
 
 def main():
-    option = initiate_program()
+    option = sys.argv[1]
     start_application(option)
 
 if __name__ == "__main__":
