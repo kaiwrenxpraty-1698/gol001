@@ -61,7 +61,6 @@ def mask_input_matrix(matrix):
 def initiate_program():
     option = sys.argv[1]
     if option != "help":
-        print_matrix(mask_input_matrix(select_from_matrix_option(option)))
         return option
     else:
         print(summary_dict[option])
