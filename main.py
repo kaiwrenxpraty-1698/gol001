@@ -16,32 +16,10 @@ arg_desc = '''\
     5. Glider
 '''
 
-summary_dict ={
-    '1' :'''This is the most common still life pattern of Game of Life: Block
-key point: the state of matrix is identical to the input matrix.''',
-    '2':'''This is the another common still life pattern of Game of Life: Bee-hive 
-key point: the state of matrix is identical to the input matrix.''',
-    '3':'''This is a popular oscillator pattern of Game of Life: Blinker 
-key point: the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.''',
-    '4':'''This is a popular oscillator pattern of Game of Life: Toad 
-key point: the matrix reaches its initial state after exactly 2 iterations, hence the pattern keeps oscillating.''',
-    '5':'''This is the most popular Spaceships pattern of Game of Life: Glider 
-key point: the pattern keeps gliding over the matrix''',
-    'help': arg_desc,
-    'error':'Sorry this option is not valid, please add help argument to know how the tool works',
-    'mapping':{
-        '1': 'Block',
-        '2': 'Bee-Hive',
-        '3': 'Blinker',
-        '4': 'Toad',
-        '5': 'Glider'
-    }
-}
-
 with open('input.json') as f:
-    data = json.load(f)
+    summary_dict = json.load(f)
 
-print(data['1'])
+print(summary_dict['1'])
 
 def summary(option):
         print(summary_dict[option])
