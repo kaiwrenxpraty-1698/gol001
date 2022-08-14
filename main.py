@@ -7,16 +7,6 @@ import sys
 import json
 from unittest import expectedFailure
 
-arg_desc = '''\
-    'Welcome to the Game of Life. 
-    Please select the option number corresponding to the pattern, you will like to print: 
-    1. Block 
-    2. Bee-Hive 
-    3. Blinker 
-    4. Toad 
-    5. Glider
-'''
-
 with open('input.json') as f:
     summary_dict = json.load(f)
 
