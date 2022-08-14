@@ -4,6 +4,7 @@ This code will display standard examples of Game of Life, based on the option se
 '''
 from time import sleep
 import sys
+import json
 
 arg_desc = '''\
     'Welcome to the Game of Life. 
@@ -37,6 +38,11 @@ key point: the pattern keeps gliding over the matrix''',
     }
 }
 
+with open('input.json') as f:
+    data = json.load(f)
+
+print(data['1'])
+
 def summary(option):
         print(summary_dict[option])
     
@@ -58,6 +64,7 @@ def mask_input_matrix(matrix):
                 output_matrix[idx].append("ALIVE")
     return output_matrix
 
+
 def select_from_matrix_option(option):
     live_cell, dead_cell = 1, 0
     if option == "1":
@@ -72,6 +79,8 @@ def select_from_matrix_option(option):
         matrix = [[dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [live_cell, live_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]] + [[dead_cell for _ in range(10)] for _ in range(7)]
     elif option == "help":
             print(arg_desc)
+    elif option == " ":
+            print("yolo")
     else:
         print(summary_dict['error'])
         exit()
