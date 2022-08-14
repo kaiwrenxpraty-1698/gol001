@@ -54,7 +54,6 @@ def select_from_matrix_option(option):
     elif option == "5":
         matrix = [[dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [live_cell, live_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]] + [[dead_cell for _ in range(10)] for _ in range(7)]
     else:
-        print(summary_dict['error'])
         exit()
     return matrix
                 
@@ -117,6 +116,9 @@ def start_application(option):
         summary(option)
     elif option == "help":
         print(summary_dict['help'])
+        return 0
+    else:
+        print(summary_dict['error'])
         return 0
 
 def main():
