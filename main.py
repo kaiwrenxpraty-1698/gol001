@@ -5,6 +5,7 @@ This code will display standard examples of Game of Life, based on the option se
 from time import sleep
 import sys
 import json
+from unittest import expectedFailure
 
 arg_desc = '''\
     'Welcome to the Game of Life. 
@@ -122,7 +123,11 @@ def start_application(option):
         return 0
 
 def main():
-    option = sys.argv[1]
+    try:
+        option = sys.argv[1]
+    except IndexError:
+        option = "null"
+
     start_application(option)
 
 if __name__ == "__main__":
