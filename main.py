@@ -5,7 +5,6 @@ This code will display standard examples of Game of Life, based on the option se
 from time import sleep
 import sys
 import json
-from unittest import expectedFailure
 
 with open('input.json') as f:
     summary_dict = json.load(f)
