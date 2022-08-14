@@ -19,8 +19,6 @@ arg_desc = '''\
 with open('input.json') as f:
     summary_dict = json.load(f)
 
-print(summary_dict['1'])
-
 def summary(option):
         print(summary_dict[option])
     
@@ -55,10 +53,6 @@ def select_from_matrix_option(option):
         matrix = [[dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]]
     elif option == "5":
         matrix = [[dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [live_cell, live_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]] + [[dead_cell for _ in range(10)] for _ in range(7)]
-    elif option == "help":
-            print(arg_desc)
-    elif option == " ":
-            print("yolo")
     else:
         print(summary_dict['error'])
         exit()
@@ -121,7 +115,8 @@ def start_application(option):
             print_matrix(mask_input_matrix(matrix))
             count += 1
         summary(option)
-    else:
+    elif option == "help":
+        print(summary_dict['help'])
         return 0
 
 def main():
