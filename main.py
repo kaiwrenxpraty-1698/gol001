@@ -6,7 +6,7 @@ from time import sleep
 import sys
 import json
 
-with open('input.json') as f:
+with open('assets/input.json') as f:
     summary_dict = json.load(f)
 
 def summary(option):
