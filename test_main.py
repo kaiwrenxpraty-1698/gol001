@@ -1,4 +1,3 @@
-import sys
 import main
 
 def test_select_from_matrix_option():
@@ -18,4 +17,3 @@ def test_implement_game_of_life():
 if __name__ == "__main__":
     test_select_from_matrix_option()
     test_implement_game_of_life()
-
