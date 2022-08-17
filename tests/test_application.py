@@ -1,6 +1,6 @@
 import unittest
 
-from gameoflife.core import implement_game_of_life
+from gameoflife.next_generation import next_generation_of
 
 
 class TestApplication(unittest.TestCase):
@@ -15,7 +15,7 @@ class TestApplication(unittest.TestCase):
                                   [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
                                   [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]] + [[0 for _ in range(10)] for _ in range(6)]
 
-        self.assertEqual(implement_game_of_life(input_matrix), expected_output_matrix)
+        self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
 
 
 if __name__ == "__main__":

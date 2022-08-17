@@ -1,4 +1,4 @@
-def implement_game_of_life(matrix):
+def next_generation_of(matrix):
     output_matrix = [[] for _ in range(len(matrix))]
     rows, columns = len(matrix), len(matrix[0])
     for row in range(rows):
