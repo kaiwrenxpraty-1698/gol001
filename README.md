@@ -1,8 +1,6 @@
-<div align="center">
-<h1 align="center">Conway's Game of Life</h1>
-<br />
+# Conway's Game of Life
+
 Python code to run a few standard examples of Conway's Game of Life
-</div>
 
 ***
 
@@ -17,6 +15,13 @@ Use the below command to run the application and display patterns for the chosen
 python3 main.py option_number
 ```
 Replace option number with the number corresponding to the pattern in the `help` command.
+
+```
+make test
+```
+
+Run tests
+
 ***
 
 ### What is Conway's Game of Life?
