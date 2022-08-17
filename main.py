@@ -77,19 +77,19 @@ def select_from_matrix_option(option):
                 
 def implement_game_of_life(matrix):
     output_matrix = [[] for _ in range(len(matrix))]
-    m, n = len(matrix), len(matrix[0])
-    for i in range(m):
-        for j in range(n):
+    rows, columns = len(matrix), len(matrix[0])
+    for i in range(rows):
+        for j in range(columns):
             living_cells = 0
-            for x in range(max(i - 1, 0), min(i + 2, m)):
-                for y in range(max(j - 1, 0), min(j + 2, n)):
+            for x in range(max(i - 1, 0), min(i + 2, rows)):
+                for y in range(max(j - 1, 0), min(j + 2, columns)):
                     if x == i and y == j:
                         continue
                     living_cells += matrix[x][y] % 2        
             output_matrix[i].append(living_cells)
 
-    for i in range(m):
-        for j in range(n):
+    for i in range(rows):
+        for j in range(columns):
             if matrix[i][j] == 1:
                 if output_matrix[i][j] == 2 or output_matrix[i][j] == 3:
                     output_matrix[i][j] = 1   
