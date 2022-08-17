@@ -7,11 +7,11 @@ def next_generation_of(matrix):
     for row in range(rows):
         for column in range(columns):
             living_cells = 0
-            for x in range(max(row - 1, 0), min(row + 2, rows)):
-                for y in range(max(column - 1, 0), min(column + 2, columns)):
+            for x in _neighbours_positions_for(row, rows):
+                for y in _neighbours_positions_for(column, columns):
                     if x == row and y == column:
                         continue
-                    living_cells += matrix[x][y] % 2        
+                    living_cells += matrix[x][y] % 2
             output_matrix[row].append(living_cells)
 
     for row in range(rows):
@@ -26,5 +26,9 @@ def next_generation_of(matrix):
                     output_matrix[row][column] = ALIVE
                 else:
                     output_matrix[row][column] = DEAD
-                    
+
     return output_matrix
+
+
+def _neighbours_positions_for(row, rows):
+    return range(max(row - 1, 0), min(row + 2, rows))
