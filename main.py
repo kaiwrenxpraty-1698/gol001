@@ -34,7 +34,12 @@ def mask_input_matrix(matrix):
 def select_from_matrix_option(option):
     live_cell, dead_cell = 1, 0
     if option == "1":
-        matrix = [[dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, live_cell, live_cell, dead_cell], [dead_cell, live_cell, live_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell]]
+        matrix = [
+            [dead_cell, dead_cell, dead_cell, dead_cell], 
+            [dead_cell, live_cell, live_cell, dead_cell], 
+            [dead_cell, live_cell, live_cell, dead_cell], 
+            [dead_cell, dead_cell, dead_cell, dead_cell]
+            ]
     elif option == "2":
         matrix = [[dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]]
     elif option == "3":
