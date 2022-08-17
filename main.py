@@ -41,7 +41,13 @@ def select_from_matrix_option(option):
             [dead_cell, dead_cell, dead_cell, dead_cell]
             ]
     elif option == "2":
-        matrix = [[dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]]
+        matrix = [
+            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], 
+            [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], 
+            [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], 
+            [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], 
+            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]
+            ]
     elif option == "3":
         matrix = [[dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]]
     elif option == "4":
