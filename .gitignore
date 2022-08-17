@@ -1,0 +1,7 @@
+# Ref https://stackoverflow.com/questions/3719243/best-practices-for-adding-gitignore-file-for-python-projects
+
+# OSX
+.DS_Store
+
+# Python
+__pycache__/
