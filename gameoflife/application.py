@@ -2,7 +2,7 @@ from time import sleep
 
 from gameoflife.select_input_matrix import select_from_matrix_option
 from gameoflife.core import implement_game_of_life
-from gameoflife.helper import introduction, print_matrix, mask_input_matrix, summary, summary_dict
+from gameoflife.input_output import introduction, print_matrix, mask_input_matrix, summary, summary_dict
 
 
 def start_application(option):
