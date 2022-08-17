@@ -5,7 +5,7 @@ This code will display standard examples of Game of Life, based on the option se
 from time import sleep
 import sys
 import json
-import sample.core
+import sample.core, sample.helper
 
 def select_from_matrix_option(option):
     live_cell, dead_cell = 1, 0
@@ -53,12 +53,12 @@ def select_from_matrix_option(option):
                 
 def start_application(option):
     if option == "1" or option == "2":
-        introduction(option)
+        sample.helper.introduction(option)
         matrix = select_from_matrix_option(option)
         matrix = sample.core.implement_game_of_life(matrix)
         print(f"Here is your output matrix -->")
-        print_matrix(mask_input_matrix(matrix))
-        summary(option)    
+        sample.helper.print_matrix(sample.helper.mask_input_matrix(matrix))
+        sample.helper.summary(option)    
     elif option == "3" or option == "4":
         matrix = select_from_matrix_option(option)
         count = 0
@@ -66,10 +66,10 @@ def start_application(option):
             matrix = sample.core.implement_game_of_life(matrix)
             sleep(.5)
             print(f"Here is your output matrix -->")
-            print_matrix(mask_input_matrix(matrix))
+            sample.helper.print_matrix(sample.helper.mask_input_matrix(matrix))
             print(f"State of the matrix --> {count%2}")
             count += 1
-        summary(option)
+        sample.helper.summary(option)
     elif option == "5":
         matrix = select_from_matrix_option(option)
         count = 0
@@ -77,14 +77,14 @@ def start_application(option):
             matrix = sample.core.implement_game_of_life(matrix)
             sleep(.75)
             print(f"Here is your output matrix -->")
-            print_matrix(mask_input_matrix(matrix))
+            sample.helper.print_matrix(sample.helper.mask_input_matrix(matrix))
             count += 1
-        summary(option)
+        sample.helper.summary(option)
     elif option == "help":
-        print(summary_dict['help'])
+        print(sample.helper.summary_dict['help'])
         return 0
     else:
-        print(summary_dict['error'])
+        print(sample.helper.summary_dict['error'])
         return 0
 
 def main():
