@@ -1,4 +1,4 @@
-def select_from_matrix_option(option):
+def select_menu_option(option):
     live_cell, dead_cell = 1, 0
     if option == "1":
         matrix = [

@@ -1,6 +1,6 @@
 from time import sleep
 
-from gameoflife.select_input_matrix import select_from_matrix_option
+from gameoflife.menu import select_menu_option
 from gameoflife.next_generation import next_generation_of
 from gameoflife.input_output import introduction, print_matrix, mask_input_matrix, summary, summary_dict
 
@@ -8,13 +8,13 @@ from gameoflife.input_output import introduction, print_matrix, mask_input_matri
 def start_application(option):
     if option == "1" or option == "2":
         introduction(option)
-        matrix = select_from_matrix_option(option)
+        matrix = select_menu_option(option)
         matrix = next_generation_of(matrix)
         print(f"Here is your output matrix -->")
         print_matrix(mask_input_matrix(matrix))
         summary(option)
     elif option == "3" or option == "4":
-        matrix = select_from_matrix_option(option)
+        matrix = select_menu_option(option)
         count = 0
         while count < 10:
             matrix = next_generation_of(matrix)
@@ -25,7 +25,7 @@ def start_application(option):
             count += 1
         summary(option)
     elif option == "5":
-        matrix = select_from_matrix_option(option)
+        matrix = select_menu_option(option)
         count = 0
         while count < 25:
             matrix = next_generation_of(matrix)

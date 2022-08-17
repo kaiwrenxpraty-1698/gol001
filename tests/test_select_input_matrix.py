@@ -1,6 +1,6 @@
 import unittest
 
-from gameoflife.select_input_matrix import select_from_matrix_option
+from gameoflife.menu import select_menu_option
 
 
 class TestSelectInputMatrix(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestSelectInputMatrix(unittest.TestCase):
                                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0]
                                ] + [[0 for _ in range(10)] for _ in range(7)]
 
-        self.assertEqual(select_from_matrix_option(option), expected_output_matrix)
+        self.assertEqual(select_menu_option(option), expected_output_matrix)
 
 
 if __name__ == "__main__":
