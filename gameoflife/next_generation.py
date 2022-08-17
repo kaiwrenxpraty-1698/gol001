@@ -9,7 +9,7 @@ def next_generation_of(matrix):
             living_cells = 0
             for x in _neighbours_positions_for(row, rows):
                 for y in _neighbours_positions_for(column, columns):
-                    if x == row and y == column:
+                    if _is_looking_outside_the_matrix_boundary(column, row, x, y):
                         continue
                     living_cells += matrix[x][y] % 2
             output_matrix[row].append(living_cells)
@@ -28,6 +28,10 @@ def next_generation_of(matrix):
                     output_matrix[row][column] = DEAD
 
     return output_matrix
+
+
+def _is_looking_outside_the_matrix_boundary(column, row, x, y):
+    return x == row and y == column
 
 
 def _neighbours_positions_for(row, rows):
