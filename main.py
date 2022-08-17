@@ -4,63 +4,18 @@ This code will display standard examples of Game of Life, based on the option se
 '''
 from time import sleep
 import sys
-import json
-import sample.core, sample.helper
-
-def select_from_matrix_option(option):
-    live_cell, dead_cell = 1, 0
-    if option == "1":
-        matrix = [
-            [dead_cell, dead_cell, dead_cell, dead_cell], 
-            [dead_cell, live_cell, live_cell, dead_cell], 
-            [dead_cell, live_cell, live_cell, dead_cell], 
-            [dead_cell, dead_cell, dead_cell, dead_cell]
-            ]
-    elif option == "2":
-        matrix = [
-            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], 
-            [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], 
-            [dead_cell, dead_cell, live_cell, live_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]
-            ]
-    elif option == "3":
-        matrix = [
-            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, live_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]
-            ]
-    elif option == "4":
-        matrix = [
-            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, dead_cell, live_cell, dead_cell, dead_cell], 
-            [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], 
-            [dead_cell, live_cell, dead_cell, dead_cell, live_cell, dead_cell], 
-            [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]
-            ]
-    elif option == "5":
-        matrix = [
-            [dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], 
-            [dead_cell, dead_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell], 
-            [live_cell, live_cell, live_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell, dead_cell]
-            ] + [[dead_cell for _ in range(10)] for _ in range(7)]
-    else:
-        exit()
-    return matrix
-                
+import sample.core, sample.select_input_matrix, sample.helper
+               
 def start_application(option):
     if option == "1" or option == "2":
         sample.helper.introduction(option)
-        matrix = select_from_matrix_option(option)
+        matrix = sample.select_input_matrix.select_from_matrix_option(option)
         matrix = sample.core.implement_game_of_life(matrix)
         print(f"Here is your output matrix -->")
         sample.helper.print_matrix(sample.helper.mask_input_matrix(matrix))
         sample.helper.summary(option)    
     elif option == "3" or option == "4":
-        matrix = select_from_matrix_option(option)
+        matrix = sample.select_input_matrix.select_from_matrix_option(option)
         count = 0
         while count < 10:
             matrix = sample.core.implement_game_of_life(matrix)
@@ -71,7 +26,7 @@ def start_application(option):
             count += 1
         sample.helper.summary(option)
     elif option == "5":
-        matrix = select_from_matrix_option(option)
+        matrix = sample.select_input_matrix.select_from_matrix_option(option)
         count = 0
         while count < 25:
             matrix = sample.core.implement_game_of_life(matrix)
