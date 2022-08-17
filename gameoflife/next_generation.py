@@ -1,3 +1,6 @@
+from gameoflife.constants import ALIVE, DEAD
+
+
 def next_generation_of(matrix):
     output_matrix = [[] for _ in range(len(matrix))]
     rows, columns = len(matrix), len(matrix[0])
@@ -13,15 +16,15 @@ def next_generation_of(matrix):
 
     for row in range(rows):
         for column in range(columns):
-            if matrix[row][column] == 1:
+            if matrix[row][column] == ALIVE:
                 if output_matrix[row][column] == 2 or output_matrix[row][column] == 3:
-                    output_matrix[row][column] = 1   
+                    output_matrix[row][column] = ALIVE
                 else:
-                    output_matrix[row][column] = 0
+                    output_matrix[row][column] = DEAD
             else:
                 if output_matrix[row][column] == 3:
-                    output_matrix[row][column] = 1
+                    output_matrix[row][column] = ALIVE
                 else:
-                    output_matrix[row][column] = 0
+                    output_matrix[row][column] = DEAD
                     
     return output_matrix

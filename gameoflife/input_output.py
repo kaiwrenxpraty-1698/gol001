@@ -1,5 +1,7 @@
 import json
 
+from gameoflife.constants import DEAD
+
 with open('assets/input.json') as f:
     summary_dict = json.load(f)
 
@@ -18,7 +20,7 @@ def mask_input_matrix(matrix):
     output_matrix = [[] for _ in range(len(matrix))]
     for idx in range(len(matrix)):
         for idx2 in range(len(matrix[0])):
-            if matrix[idx][idx2] == 0:
+            if matrix[idx][idx2] == DEAD:
                 output_matrix[idx].append(" ")
             else:
                 output_matrix[idx].append("ALIVE")
