@@ -16,11 +16,17 @@ python3 main.py option_number
 ```
 Replace option number with the number corresponding to the pattern in the `help` command.
 
+Run the blinker example using
+```
+make blinker
+```
+
+Run tests using
 ```
 make test
 ```
 
-Run tests
+
 
 ***
 
