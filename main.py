@@ -5,6 +5,7 @@ This code will display standard examples of Game of Life, based on the option se
 from time import sleep
 import sys
 import json
+import sample.core
 
 with open('assets/input.json') as f:
     summary_dict = json.load(f)
@@ -75,39 +76,11 @@ def select_from_matrix_option(option):
         exit()
     return matrix
                 
-def implement_game_of_life(matrix):
-    output_matrix = [[] for _ in range(len(matrix))]
-    rows, columns = len(matrix), len(matrix[0])
-    for row in range(rows):
-        for column in range(columns):
-            living_cells = 0
-            for x in range(max(row - 1, 0), min(row + 2, rows)):
-                for y in range(max(column - 1, 0), min(column + 2, columns)):
-                    if x == row and y == column:
-                        continue
-                    living_cells += matrix[x][y] % 2        
-            output_matrix[row].append(living_cells)
-
-    for row in range(rows):
-        for column in range(columns):
-            if matrix[row][column] == 1:
-                if output_matrix[row][column] == 2 or output_matrix[row][column] == 3:
-                    output_matrix[row][column] = 1   
-                else:
-                    output_matrix[row][column] = 0
-            else:
-                if output_matrix[row][column] == 3:
-                    output_matrix[row][column] = 1
-                else:
-                    output_matrix[row][column] = 0
-                    
-    return output_matrix
-
 def start_application(option):
     if option == "1" or option == "2":
         introduction(option)
         matrix = select_from_matrix_option(option)
-        matrix = implement_game_of_life(matrix)
+        matrix = sample.core.implement_game_of_life(matrix)
         print(f"Here is your output matrix -->")
         print_matrix(mask_input_matrix(matrix))
         summary(option)    
@@ -115,7 +88,7 @@ def start_application(option):
         matrix = select_from_matrix_option(option)
         count = 0
         while count < 10:
-            matrix = implement_game_of_life(matrix)
+            matrix = sample.core.implement_game_of_life(matrix)
             sleep(.5)
             print(f"Here is your output matrix -->")
             print_matrix(mask_input_matrix(matrix))
@@ -126,7 +99,7 @@ def start_application(option):
         matrix = select_from_matrix_option(option)
         count = 0
         while count < 25:
-            matrix = implement_game_of_life(matrix)
+            matrix = sample.core.implement_game_of_life(matrix)
             sleep(.75)
             print(f"Here is your output matrix -->")
             print_matrix(mask_input_matrix(matrix))
