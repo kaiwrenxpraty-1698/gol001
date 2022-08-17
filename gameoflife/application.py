@@ -14,8 +14,7 @@ def start_application(option):
         print_matrix(mask_input_matrix(matrix))
         summary(option)
     elif option == "3" or option == "4":
-        from gameoflife import select_input_matrix
-        matrix = select_input_matrix.select_from_matrix_option(option)
+        matrix = select_from_matrix_option(option)
         count = 0
         while count < 10:
             matrix = implement_game_of_life(matrix)
