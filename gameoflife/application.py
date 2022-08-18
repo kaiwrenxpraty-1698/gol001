@@ -10,17 +10,19 @@ def start_application(option):
         introduction(option)
         first_generation_matrix = select_menu_option(option)
         next_generation_matrix = next_generation_of(first_generation_matrix)
-        print_next_generation(next_generation_matrix, option)
+        print_next_generation_matrix(next_generation_matrix, option)
     elif option == "3" or option == "4":
-        matrix = select_menu_option(option)
-        count = 0
-        while count < 10:
-            matrix = next_generation_of(matrix)
+        first_generation_matrix = select_menu_option(option)
+        number_of_generation = 0
+        next_generation_matrix, number_of_generation = generate_first_generation_matrix(number_of_generation, first_generation_matrix)
+
+        while number_of_generation < 10:
+            next_generation_matrix = next_generation_of(next_generation_matrix)
             sleep(.5)
             print(f"Here is your output matrix -->")
-            print_matrix(mask_input_matrix(matrix))
-            print(f"State of the matrix --> {count%2}")
-            count += 1
+            print_matrix(mask_input_matrix(next_generation_matrix))
+            print(f"State of the matrix --> {number_of_generation%2}")
+            number_of_generation += 1
         summary(option)
     elif option == "5":
         matrix = select_menu_option(option)
@@ -39,7 +41,13 @@ def start_application(option):
         print(summary_dict['error'])
         return 0
 
-def print_next_generation(next_generation_matrix, option):
+def print_next_generation_matrix(next_generation_matrix, option):
+    sleep(.5)
     print(f"Here is your output matrix -->")
     print_matrix(mask_input_matrix(next_generation_matrix))
     summary(option)
+
+def generate_first_generation_matrix(number_of_generation, first_generation_matrix):
+    next_generation_matrix = next_generation_of(first_generation_matrix)
+    number_of_generation += 1
+    return next_generation_matrix, number_of_generation
