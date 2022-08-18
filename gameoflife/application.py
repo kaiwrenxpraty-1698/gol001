@@ -2,7 +2,7 @@ from time import sleep
 
 from gameoflife.menu import select_menu_option
 from gameoflife.next_generation import next_generation_of
-from gameoflife.input_output import start_introduction, print_matrix, mask_input_matrix_values, end_summary, summary_dict
+from gameoflife.input_output import start_introduction, print_matrix, mask_input_matrix_values, end_summary, summary_dict, output_print_statement, output_generation_statement
 
 
 def start_application(option):
@@ -87,12 +87,3 @@ def print_intermediate_generation_matrix(next_generation_matrix, number_of_gener
         output_print_statement("output")
         print_matrix(mask_input_matrix_values(next_generation_matrix))
         output_generation_statement(number_of_generation)
-
-
-def output_print_statement(state):
-    print(f"Here is your {state} matrix -->")
-
-
-def output_generation_statement(number_of_generation):
-    print(f"Generation of the matrix --> {number_of_generation}")
-
