@@ -15,22 +15,18 @@ def start_application(option):
 
         number_of_generation = 1
         next_generation_matrix, number_of_generation = _generate_and_print_second_generation_(first_generation_matrix, number_of_generation)
-        number_of_generation += 1
 
-        while number_of_generation < 10:
-            _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
-            number_of_generation += 1
+        while number_of_generation <= 10:
+            next_generation_matrix, number_of_generation = _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
         end_summary(option)
     elif option == "5":
         first_generation_matrix = _generate_and_print_initial_generation_(option)
 
         number_of_generation = 1
         next_generation_matrix, number_of_generation = _generate_and_print_second_generation_(first_generation_matrix, number_of_generation)
-        number_of_generation += 1
 
-        while number_of_generation < 25:
-            _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
-            number_of_generation += 1
+        while number_of_generation <= 25:
+            next_generation_matrix, number_of_generation = _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
         end_summary(option)
     elif option == "help":
         print(summary_dict['help'])
@@ -43,6 +39,7 @@ def start_application(option):
 def _generate_and_print_second_generation_(first_generation_matrix, number_of_generation):
     next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
     print_next_generation_matrix(number_of_generation, next_generation_matrix)
+    number_of_generation += 1
     return next_generation_matrix, number_of_generation
 
 
@@ -53,6 +50,8 @@ def _generate_and_print_next_generation_(first_generation_matrix, number_of_gene
     else:
         next_generation_matrix = next_generation_of(first_generation_matrix)
         print_intermediate_generation_matrix(next_generation_matrix, number_of_generation)
+        number_of_generation += 1
+        return next_generation_matrix, number_of_generation
 
 
 
