@@ -8,10 +8,7 @@ from gameoflife.input_output import start_introduction, print_matrix, mask_input
 def start_application(option):
     if option == "1" or option == "2":
         first_generation_matrix = _generate_and_print_initial_generation_(option)
-
-        next_generation_matrix = next_generation_of(first_generation_matrix)
-        print_next_generation_matrix(next_generation_matrix)
-
+        _generate_and_print_next_generation_(first_generation_matrix)
         end_summary(option)
     elif option == "3" or option == "4":
         start_introduction(option)
@@ -47,6 +44,11 @@ def start_application(option):
     else:
         print(summary_dict['error'])
         return 0
+
+
+def _generate_and_print_next_generation_(first_generation_matrix):
+    next_generation_matrix = next_generation_of(first_generation_matrix)
+    print_next_generation_matrix(next_generation_matrix)
 
 
 def _generate_and_print_initial_generation_(option):
