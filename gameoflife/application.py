@@ -15,7 +15,7 @@ def start_application(option):
 
         number_of_generation = 1
         next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
-        print_next_generation_matrix(next_generation_matrix)
+        print_next_generation_matrix(number_of_generation, next_generation_matrix)
         number_of_generation += 1
 
         while number_of_generation < 10:
@@ -28,7 +28,7 @@ def start_application(option):
 
         number_of_generation = 1
         next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
-        print_next_generation_matrix(next_generation_matrix)
+        print_next_generation_matrix(number_of_generation, next_generation_matrix)
         number_of_generation += 1
 
         while number_of_generation < 25:
@@ -66,7 +66,7 @@ def print_next_generation_matrix(number_of_generation, next_generation_matrix):
     sleep(.5)
     print(f"Here is your output matrix -->")
     print_matrix(mask_input_matrix_values(next_generation_matrix))
-    print(f"Generation of the matrix --> {number_of_generation + 1}")
+    print(f"Generation of the matrix --> {number_of_generation}")
     
 
 def generate_second_generation_matrix(number_of_generation, first_generation_matrix):
