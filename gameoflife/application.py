@@ -36,16 +36,21 @@ def start_application(option):
         print(summary_dict['error'])
         return 0
 
+
+
 def print_next_generation_matrix(next_generation_matrix, option):
     sleep(.5)
     print(f"Here is your output matrix -->")
     print_matrix(mask_input_matrix(next_generation_matrix))
     summary(option)
 
+
 def generate_first_generation_matrix(number_of_generation, first_generation_matrix):
     next_generation_matrix = next_generation_of(first_generation_matrix)
     number_of_generation += 1
     return next_generation_matrix, number_of_generation
+
+
 
 def print_intermediate_generation_matrix(number_of_generation, next_generation_matrix):
     sleep(.5)
