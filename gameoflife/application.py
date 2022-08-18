@@ -21,14 +21,13 @@ def start_application(option):
             number_of_generation += 1
         summary(option)
     elif option == "5":
-        matrix = select_menu_option(option)
-        count = 0
-        while count < 25:
-            matrix = next_generation_of(matrix)
-            sleep(.75)
-            print(f"Here is your output matrix -->")
-            print_matrix(mask_input_matrix(matrix))
-            count += 1
+        first_generation_matrix = select_menu_option(option)
+        number_of_generation = 0
+        next_generation_matrix, number_of_generation = generate_first_generation_matrix(number_of_generation, first_generation_matrix)
+        while number_of_generation < 25:
+            next_generation_matrix = next_generation_of(next_generation_matrix)
+            print_intermediate_generation_matrix(number_of_generation, next_generation_matrix)
+            number_of_generation += 1
         summary(option)
     elif option == "help":
         print(summary_dict['help'])
