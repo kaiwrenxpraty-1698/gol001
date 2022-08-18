@@ -53,7 +53,6 @@ def generate_first_generation_matrix(number_of_generation, first_generation_matr
     return next_generation_matrix, number_of_generation
 
 
-
 def print_intermediate_generation_matrix(number_of_generation, next_generation_matrix):
     sleep(.5)
     print(f"Here is your output matrix -->")
