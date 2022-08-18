@@ -10,7 +10,7 @@ def end_summary(option):
     
 def start_introduction(option):
     name_of_pattern = summary_dict['mapping'][option]
-    print(f'Welcome to the Game of Life; So glad that you have chosen {name_of_pattern}')
+    print(f'Welcome to the Game of Life; So glad that you have chosen: {name_of_pattern}')
 
 def print_matrix(matrix):
     for idx in range(len(matrix)):
