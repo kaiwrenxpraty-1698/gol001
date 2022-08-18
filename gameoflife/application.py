@@ -13,20 +13,20 @@ def start_application(option):
     elif option == "3" or option == "4":
         first_generation_matrix = _generate_and_print_initial_generation_(option)
 
-        number_of_generation = 1
-        next_generation_matrix, number_of_generation = _generate_and_print_second_generation_(first_generation_matrix, number_of_generation)
+        NUMBER_OF_GENERATION = 1
+        next_generation_matrix, NUMBER_OF_GENERATION = _generate_and_print_second_generation_(first_generation_matrix, NUMBER_OF_GENERATION)
 
-        while number_of_generation <= 10:
-            next_generation_matrix, number_of_generation = _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
+        while NUMBER_OF_GENERATION <= 10:
+            next_generation_matrix, NUMBER_OF_GENERATION = _generate_and_print_next_generation_(next_generation_matrix, NUMBER_OF_GENERATION)
         end_summary(option)
     elif option == "5":
         first_generation_matrix = _generate_and_print_initial_generation_(option)
 
-        number_of_generation = 1
-        next_generation_matrix, number_of_generation = _generate_and_print_second_generation_(first_generation_matrix, number_of_generation)
+        NUMBER_OF_GENERATION = 1
+        next_generation_matrix, NUMBER_OF_GENERATION = _generate_and_print_second_generation_(first_generation_matrix, NUMBER_OF_GENERATION)
 
-        while number_of_generation <= 25:
-            next_generation_matrix, number_of_generation = _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
+        while NUMBER_OF_GENERATION <= 25:
+            next_generation_matrix, NUMBER_OF_GENERATION = _generate_and_print_next_generation_(next_generation_matrix, NUMBER_OF_GENERATION)
         end_summary(option)
     elif option == "help":
         print(summary_dict['help'])
