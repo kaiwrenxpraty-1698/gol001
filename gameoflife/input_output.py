@@ -5,7 +5,7 @@ from gameoflife.constants import DEAD
 with open('assets/input.json') as f:
     summary_dict = json.load(f)
 
-def summary(option):
+def end_summary(option):
         print(summary_dict[option])
     
 def introduction(option):
