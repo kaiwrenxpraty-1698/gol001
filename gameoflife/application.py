@@ -8,7 +8,7 @@ from gameoflife.input_output import start_introduction, print_matrix, mask_input
 def start_application(option):
     if option == "1" or option == "2":
         first_generation_matrix = _generate_and_print_initial_generation_(option)
-        _generate_and_print_next_generation_(first_generation_matrix)
+        _generate_and_print_next_generation_(first_generation_matrix, None)
         end_summary(option)
     elif option == "3" or option == "4":
         first_generation_matrix = _generate_and_print_initial_generation_(option)
@@ -19,8 +19,7 @@ def start_application(option):
         number_of_generation += 1
 
         while number_of_generation < 10:
-            next_generation_matrix = next_generation_of(next_generation_matrix)
-            print_intermediate_generation_matrix(number_of_generation, next_generation_matrix)
+            _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
             number_of_generation += 1
         end_summary(option)
     elif option == "5":
@@ -32,8 +31,7 @@ def start_application(option):
         number_of_generation += 1
 
         while number_of_generation < 25:
-            next_generation_matrix = next_generation_of(next_generation_matrix)
-            print_intermediate_generation_matrix(number_of_generation, next_generation_matrix)
+            _generate_and_print_next_generation_(next_generation_matrix, number_of_generation)
             number_of_generation += 1
         end_summary(option)
     elif option == "help":
@@ -44,9 +42,14 @@ def start_application(option):
         return 0
 
 
-def _generate_and_print_next_generation_(first_generation_matrix):
-    next_generation_matrix = next_generation_of(first_generation_matrix)
-    print_next_generation_matrix(next_generation_matrix)
+def _generate_and_print_next_generation_(first_generation_matrix, number_of_generation = None):
+    if number_of_generation is None:
+        next_generation_matrix = next_generation_of(first_generation_matrix)
+        print_next_generation_matrix(number_of_generation, next_generation_matrix)
+    else:
+        next_generation_matrix = next_generation_of(first_generation_matrix)
+        print_intermediate_generation_matrix(next_generation_matrix, number_of_generation)
+
 
 
 def _generate_and_print_initial_generation_(option):
@@ -63,11 +66,16 @@ def print_first_generation(first_generation_matrix):
 
 
 def print_next_generation_matrix(number_of_generation, next_generation_matrix):
-    sleep(.5)
-    print(f"Here is your output matrix -->")
-    print_matrix(mask_input_matrix_values(next_generation_matrix))
-    print(f"Generation of the matrix --> {number_of_generation}")
-    
+    if number_of_generation:
+        sleep(.5)
+        print(f"Here is your output matrix -->")
+        print_matrix(mask_input_matrix_values(next_generation_matrix))
+        print(f"Generation of the matrix --> {number_of_generation}")
+    else:
+        sleep(.5)
+        print(f"Here is your output matrix -->")
+        print_matrix(mask_input_matrix_values(next_generation_matrix))
+
 
 def generate_second_generation_matrix(number_of_generation, first_generation_matrix):
     next_generation_matrix = next_generation_of(first_generation_matrix)
@@ -75,8 +83,9 @@ def generate_second_generation_matrix(number_of_generation, first_generation_mat
     return next_generation_matrix, number_of_generation
 
 
-def print_intermediate_generation_matrix(number_of_generation, next_generation_matrix):
-    sleep(.5)
-    print(f"Here is your output matrix -->")
-    print_matrix(mask_input_matrix_values(next_generation_matrix))
-    print(f"Generation of the matrix --> {number_of_generation}")
+def print_intermediate_generation_matrix(next_generation_matrix, number_of_generation = None):
+    if number_of_generation:
+        sleep(.5)
+        print(f"Here is your output matrix -->")
+        print_matrix(mask_input_matrix_values(next_generation_matrix))
+        print(f"Generation of the matrix --> {number_of_generation}")
