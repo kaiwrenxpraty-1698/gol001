@@ -15,13 +15,9 @@ def start_application(option):
         first_generation_matrix = select_menu_option(option)
         number_of_generation = 0
         next_generation_matrix, number_of_generation = generate_first_generation_matrix(number_of_generation, first_generation_matrix)
-
         while number_of_generation < 10:
             next_generation_matrix = next_generation_of(next_generation_matrix)
-            sleep(.5)
-            print(f"Here is your output matrix -->")
-            print_matrix(mask_input_matrix(next_generation_matrix))
-            print(f"State of the matrix --> {number_of_generation%2}")
+            print_intermediate_generation_matrix(number_of_generation, next_generation_matrix)
             number_of_generation += 1
         summary(option)
     elif option == "5":
@@ -51,3 +47,9 @@ def generate_first_generation_matrix(number_of_generation, first_generation_matr
     next_generation_matrix = next_generation_of(first_generation_matrix)
     number_of_generation += 1
     return next_generation_matrix, number_of_generation
+
+def print_intermediate_generation_matrix(number_of_generation, next_generation_matrix):
+    sleep(.5)
+    print(f"Here is your output matrix -->")
+    print_matrix(mask_input_matrix(next_generation_matrix))
+    print(f"Generation of the matrix --> {number_of_generation}")
