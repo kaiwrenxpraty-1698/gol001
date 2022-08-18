@@ -16,6 +16,13 @@ def print_matrix(matrix):
     for idx in range(len(matrix)):
             print(matrix[idx])
 
+def output_print_statement(state):
+    print(f"Here is your {state} matrix -->")
+
+
+def output_generation_statement(number_of_generation):
+    print(f"Generation of the matrix --> {number_of_generation}")
+
 def mask_input_matrix_values(matrix): 
     output_matrix = [[] for _ in range(len(matrix))]
     for idx in range(len(matrix)):
