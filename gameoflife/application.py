@@ -58,7 +58,7 @@ def _generate_and_print_initial_generation_(option):
 
 
 def print_first_generation(first_generation_matrix):
-    print(f"Here is your initial generation matrix -->")
+    output_print_statement("initial generation")
     print_matrix(mask_input_matrix_values(first_generation_matrix))
     sleep(1)
 
@@ -66,12 +66,12 @@ def print_first_generation(first_generation_matrix):
 def print_next_generation_matrix(number_of_generation, next_generation_matrix):
     if number_of_generation:
         sleep(.5)
-        print(f"Here is your output matrix -->")
+        output_print_statement("output")
         print_matrix(mask_input_matrix_values(next_generation_matrix))
-        print(f"Generation of the matrix --> {number_of_generation}")
+        output_generation_statement(number_of_generation)
     else:
         sleep(.5)
-        print(f"Here is your output matrix -->")
+        output_print_statement("output")
         print_matrix(mask_input_matrix_values(next_generation_matrix))
 
 
@@ -84,6 +84,15 @@ def generate_second_generation_matrix(number_of_generation, first_generation_mat
 def print_intermediate_generation_matrix(next_generation_matrix, number_of_generation = None):
     if number_of_generation:
         sleep(.5)
-        print(f"Here is your output matrix -->")
+        output_print_statement("output")
         print_matrix(mask_input_matrix_values(next_generation_matrix))
-        print(f"Generation of the matrix --> {number_of_generation}")
+        output_generation_statement(number_of_generation)
+
+
+def output_print_statement(state):
+    print(f"Here is your {state} matrix -->")
+
+
+def output_generation_statement(number_of_generation):
+    print(f"Generation of the matrix --> {number_of_generation}")
+
