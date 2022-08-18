@@ -16,7 +16,7 @@ def print_matrix(matrix):
     for idx in range(len(matrix)):
             print(matrix[idx])
 
-def mask_input_matrix(matrix): 
+def mask_input_matrix_values(matrix): 
     output_matrix = [[] for _ in range(len(matrix))]
     for idx in range(len(matrix)):
         for idx2 in range(len(matrix[0])):
