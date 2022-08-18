@@ -8,11 +8,9 @@ from gameoflife.input_output import introduction, print_matrix, mask_input_matri
 def start_application(option):
     if option == "1" or option == "2":
         introduction(option)
-        matrix = select_menu_option(option)
-        matrix = next_generation_of(matrix)
-        print(f"Here is your output matrix -->")
-        print_matrix(mask_input_matrix(matrix))
-        summary(option)
+        first_generation_matrix = select_menu_option(option)
+        next_generation_matrix = next_generation_of(first_generation_matrix)
+        print_next_generation(next_generation_matrix, option)
     elif option == "3" or option == "4":
         matrix = select_menu_option(option)
         count = 0
@@ -40,3 +38,8 @@ def start_application(option):
     else:
         print(summary_dict['error'])
         return 0
+
+def print_next_generation(next_generation_matrix, option):
+    print(f"Here is your output matrix -->")
+    print_matrix(mask_input_matrix(next_generation_matrix))
+    summary(option)
