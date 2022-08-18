@@ -14,8 +14,7 @@ def start_application(option):
         first_generation_matrix = _generate_and_print_initial_generation_(option)
 
         number_of_generation = 1
-        next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
-        print_next_generation_matrix(number_of_generation, next_generation_matrix)
+        next_generation_matrix, number_of_generation = _generate_and_print_second_generation_(first_generation_matrix, number_of_generation)
         number_of_generation += 1
 
         while number_of_generation < 10:
@@ -26,8 +25,7 @@ def start_application(option):
         first_generation_matrix = _generate_and_print_initial_generation_(option)
 
         number_of_generation = 1
-        next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
-        print_next_generation_matrix(number_of_generation, next_generation_matrix)
+        next_generation_matrix, number_of_generation = _generate_and_print_second_generation_(first_generation_matrix, number_of_generation)
         number_of_generation += 1
 
         while number_of_generation < 25:
@@ -40,6 +38,12 @@ def start_application(option):
     else:
         print(summary_dict['error'])
         return 0
+
+
+def _generate_and_print_second_generation_(first_generation_matrix, number_of_generation):
+    next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
+    print_next_generation_matrix(number_of_generation, next_generation_matrix)
+    return next_generation_matrix, number_of_generation
 
 
 def _generate_and_print_next_generation_(first_generation_matrix, number_of_generation = None):
