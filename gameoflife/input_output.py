@@ -8,7 +8,7 @@ with open('assets/input.json') as f:
 def end_summary(option):
         print(summary_dict[option])
     
-def introduction(option):
+def start_introduction(option):
     name_of_pattern = summary_dict['mapping'][option]
     print(f'Welcome to the Game of Life; So glad that you have chosen {name_of_pattern}')
 
