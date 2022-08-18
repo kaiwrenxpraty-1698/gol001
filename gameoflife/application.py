@@ -11,9 +11,7 @@ def start_application(option):
         _generate_and_print_next_generation_(first_generation_matrix)
         end_summary(option)
     elif option == "3" or option == "4":
-        start_introduction(option)
-        first_generation_matrix = select_menu_option(option)
-        print_first_generation(first_generation_matrix)
+        first_generation_matrix = _generate_and_print_initial_generation_(option)
 
         number_of_generation = 0
         next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
@@ -26,12 +24,12 @@ def start_application(option):
             number_of_generation += 1
         end_summary(option)
     elif option == "5":
-        start_introduction(option)
-        first_generation_matrix = select_menu_option(option)
-        number_of_generation = 0
+        first_generation_matrix = _generate_and_print_initial_generation_(option)
 
+        number_of_generation = 0
         next_generation_matrix, number_of_generation = generate_second_generation_matrix(number_of_generation, first_generation_matrix)
         print_next_generation_matrix(next_generation_matrix)
+        number_of_generation += 1
 
         while number_of_generation < 25:
             next_generation_matrix = next_generation_of(next_generation_matrix)
