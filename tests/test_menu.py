@@ -32,5 +32,7 @@ class TestMenu(unittest.TestCase):
     def test_menu_option_1_returns_block(self):
         self.assertEqual(Menu("1").grid_for_option(), BLOCK_PATTERN)
 
+    # TODO: Write the remaining menu option specs
+
 if __name__ == "__main__":
     unittest.main()
