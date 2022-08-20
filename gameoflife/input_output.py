@@ -1,6 +1,7 @@
 import json
 
 from gameoflife.constants import DEAD
+from gameoflife.menu import Menu
 
 with open('assets/input.json') as f:
     summary_dict = json.load(f)
@@ -32,3 +33,10 @@ def mask_input_matrix_values(matrix):
             else:
                 output_matrix[idx].append("ALIVE")
     return output_matrix
+
+def select_menu_option(option):
+    menu = Menu(option)
+    if menu.is_valid_option():
+        return menu.grid_for_option()
+    else:
+        exit()

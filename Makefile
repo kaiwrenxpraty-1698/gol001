@@ -5,3 +5,6 @@ test:
 
 blinker:
 	python3 main.py 3
+
+help:
+	python3 main.py help

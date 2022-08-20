@@ -1,19 +1,36 @@
 import unittest
 
-from gameoflife.constants import DEAD, ALIVE
-from gameoflife.menu import select_menu_option
+from gameoflife.constants import BLOCK_PATTERN
+from gameoflife.menu import Menu
 
 
-class TestSelectInputMatrix(unittest.TestCase):
-    def test_select_from_matrix_option(self):
-        option = "5"
-        expected_output_matrix = [[DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD],
-                                  [DEAD, DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD],
-                                  [ALIVE, ALIVE, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD]
-                                  ] + [[DEAD for _ in range(10)] for _ in range(7)]
+class TestMenu(unittest.TestCase):
+    def test_menu_option_1_is_valid(self):
+        self.assertEqual(Menu("1").is_valid_option(), True)
 
-        self.assertEqual(select_menu_option(option), expected_output_matrix)
+    def test_menu_option_2_is_valid(self):
+        self.assertEqual(Menu("2").is_valid_option(), True)
 
+    def test_menu_option_3_is_valid(self):
+        self.assertEqual(Menu("3").is_valid_option(), True)
+
+    def test_menu_option_4_is_valid(self):
+        self.assertEqual(Menu("4").is_valid_option(), True)
+
+    def test_menu_option_5_is_valid(self):
+        self.assertEqual(Menu("5").is_valid_option(), True)
+
+    def test_menu_option_6_is_not_valid(self):
+        self.assertEqual(Menu("6").is_valid_option(), False)
+
+    def test_menu_option_0_is_not_valid(self):
+        self.assertEqual(Menu("0").is_valid_option(), False)
+
+    def test_menu_option_One_is_not_valid(self):
+        self.assertEqual(Menu("One").is_valid_option(), False)
+
+    def test_menu_option_1_returns_block(self):
+        self.assertEqual(Menu("1").grid_for_option(), BLOCK_PATTERN)
 
 if __name__ == "__main__":
     unittest.main()

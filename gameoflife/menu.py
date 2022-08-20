@@ -1,46 +1,42 @@
-from gameoflife.constants import DEAD, ALIVE
+from gameoflife.constants import DEAD, ALIVE, BLOCK_PATTERN
 
 
-def select_menu_option(option):
-    if option == "1":
-        matrix = [
-            [DEAD, DEAD, DEAD, DEAD], 
-            [DEAD, ALIVE, ALIVE, DEAD], 
-            [DEAD, ALIVE, ALIVE, DEAD], 
-            [DEAD, DEAD, DEAD, DEAD]
-            ]
-    elif option == "2":
-        matrix = [
-            [DEAD, DEAD, DEAD, DEAD, DEAD, DEAD], 
-            [DEAD, DEAD, ALIVE, ALIVE, DEAD, DEAD], 
-            [DEAD, ALIVE, DEAD, DEAD, ALIVE, DEAD], 
-            [DEAD, DEAD, ALIVE, ALIVE, DEAD, DEAD], 
+class Menu:
+    menu_options = {
+        "1": BLOCK_PATTERN,
+        "2": [
+            [DEAD, DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, DEAD, ALIVE, ALIVE, DEAD, DEAD],
+            [DEAD, ALIVE, DEAD, DEAD, ALIVE, DEAD],
+            [DEAD, DEAD, ALIVE, ALIVE, DEAD, DEAD],
             [DEAD, DEAD, DEAD, DEAD, DEAD, DEAD]
-            ]
-    elif option == "3":
-        matrix = [
-            [DEAD, DEAD, DEAD, DEAD, DEAD], 
-            [DEAD, DEAD, ALIVE, DEAD, DEAD], 
-            [DEAD, DEAD, ALIVE, DEAD, DEAD], 
-            [DEAD, DEAD, ALIVE, DEAD, DEAD], 
+        ],
+        "3": [
+            [DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, DEAD, ALIVE, DEAD, DEAD],
+            [DEAD, DEAD, ALIVE, DEAD, DEAD],
+            [DEAD, DEAD, ALIVE, DEAD, DEAD],
             [DEAD, DEAD, DEAD, DEAD, DEAD]
-            ]
-    elif option == "4":
-        matrix = [
-            [DEAD, DEAD, DEAD, DEAD, DEAD, DEAD], 
-            [DEAD, DEAD, DEAD, ALIVE, DEAD, DEAD], 
-            [DEAD, ALIVE, DEAD, DEAD, ALIVE, DEAD], 
-            [DEAD, ALIVE, DEAD, DEAD, ALIVE, DEAD], 
-            [DEAD, DEAD, ALIVE, DEAD, DEAD, DEAD], 
+        ],
+        "4": [
+            [DEAD, DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, DEAD, DEAD, ALIVE, DEAD, DEAD],
+            [DEAD, ALIVE, DEAD, DEAD, ALIVE, DEAD],
+            [DEAD, ALIVE, DEAD, DEAD, ALIVE, DEAD],
+            [DEAD, DEAD, ALIVE, DEAD, DEAD, DEAD],
             [DEAD, DEAD, DEAD, DEAD, DEAD, DEAD]
-            ]
-    elif option == "5":
-        matrix = [
-            [DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD], 
-            [DEAD, DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD], 
-            [ALIVE, ALIVE, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD]
-            ] + [[DEAD for _ in range(10)] for _ in range(7)]
-    else:
-        exit()
-    return matrix
- 
+        ],
+        "5": [[DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD],
+              [DEAD, DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD],
+              [ALIVE, ALIVE, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD]
+              ] + [[DEAD for _ in range(10)] for _ in range(7)]
+    }
+
+    def __init__(self, option):
+        self.option = option
+
+    def grid_for_option(self):
+        return self.menu_options[self.option]
+
+    def is_valid_option(self):
+        return self.option in self.menu_options.keys()
