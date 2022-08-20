@@ -21,6 +21,24 @@ class TestApplication(unittest.TestCase):
 
         self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
 
+    def test_horziontal_blinker_becomes_vertical_in_next_generation(self):
+        input_matrix = [
+            [DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, DEAD, ALIVE, DEAD, DEAD],
+            [DEAD, DEAD, ALIVE, DEAD, DEAD],
+            [DEAD, DEAD, ALIVE, DEAD, DEAD],
+            [DEAD, DEAD, DEAD, DEAD, DEAD]
+        ]
+        expected_output_matrix = [
+            [DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, ALIVE, ALIVE, ALIVE, DEAD],
+            [DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, DEAD, DEAD, DEAD, DEAD]
+        ]
+
+        self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
+
 
 if __name__ == "__main__":
     unittest.main()
