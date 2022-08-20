@@ -40,7 +40,7 @@ class TestApplication(unittest.TestCase):
 
         self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
 
-    def test_horziontal_blinker_becomes_vertical_in_next_generation(self):
+    def test_horizontal_blinker_becomes_vertical_in_next_generation(self):
         input_matrix = [
             [DEAD, DEAD, DEAD, DEAD, DEAD],
             [DEAD, DEAD, DEAD, DEAD, DEAD],
@@ -55,6 +55,18 @@ class TestApplication(unittest.TestCase):
             [DEAD, DEAD, ALIVE, DEAD, DEAD],
             [DEAD, DEAD, DEAD, DEAD, DEAD]
         ]
+
+        self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
+
+    def test_block_remains_unchanged_in_next_generation(self):
+        input_matrix = [
+            [DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, DEAD, DEAD, DEAD, DEAD],
+            [DEAD, ALIVE, ALIVE, DEAD, DEAD],
+            [DEAD, ALIVE, ALIVE, DEAD, DEAD],
+            [DEAD, DEAD, DEAD, DEAD, DEAD]
+        ]
+        expected_output_matrix = [row[:] for row in input_matrix]
 
         self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
 
