@@ -1,9 +1,12 @@
 from time import sleep
 
-from gameoflife.next_generation import next_generation_of
+from gameoflife.next_generation import NextGeneration
 from gameoflife.input_output import InputOutput
 
 def start_application(option):
+    '''
+    core function to generate next generation based on the input option
+    '''
     if option == "1" or option == "2":
         first_generation_matrix = _generate_and_print_initial_generation(option)
         _generate_and_print_next_generation(first_generation_matrix, None)
@@ -44,10 +47,12 @@ def _generate_and_print_second_generation(first_generation_matrix, number_of_gen
 
 def _generate_and_print_next_generation(first_generation_matrix, number_of_generation=None):
     if number_of_generation is None:
-        next_generation_matrix = next_generation_of(first_generation_matrix)
+        next_generation = NextGeneration(first_generation_matrix)
+        next_generation_matrix = next_generation.next_generation_of()
         print_next_generation_matrix(number_of_generation, next_generation_matrix)
     else:
-        next_generation_matrix = next_generation_of(first_generation_matrix)
+        next_generation = NextGeneration(first_generation_matrix)
+        next_generation_matrix = next_generation.next_generation_of()
         print_intermediate_generation_matrix(next_generation_matrix, number_of_generation)
         number_of_generation += 1
         return next_generation_matrix, number_of_generation
@@ -62,6 +67,9 @@ def _generate_and_print_initial_generation(option):
 
 
 def print_first_generation(first_generation_matrix):
+    '''
+    prints first generation of the input template with static information for the user
+    '''
     input_output = InputOutput(None, first_generation_matrix)
     input_output.output_print_statement("initial generation")
     input_output.mask_input_matrix_values()
@@ -85,7 +93,8 @@ def print_next_generation_matrix(number_of_generation, next_generation_matrix):
 
 
 def generate_second_generation_matrix(number_of_generation, first_generation_matrix):
-    next_generation_matrix = next_generation_of(first_generation_matrix)
+    next_generation = NextGeneration(first_generation_matrix)
+    next_generation_matrix = next_generation.next_generation_of()
     number_of_generation += 1
     return next_generation_matrix, number_of_generation
 
