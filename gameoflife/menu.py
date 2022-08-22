@@ -42,4 +42,7 @@ class Menu:
         return self.menu_options[self.option]
 
     def is_valid_option(self):
+        '''
+        method to check valid input option
+        '''
         return self.option in self.menu_options.keys()
