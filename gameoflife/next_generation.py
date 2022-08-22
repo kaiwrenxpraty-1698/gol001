@@ -11,27 +11,18 @@ class NextGeneration:
         self.matrix = matrix
 
     def get_rows(self):
-        '''
-        method to access rows
-        '''
         return len(self.matrix)
     
     def get_columns(self):
-        '''
-        method to access columns
-        '''
         return len(self.matrix[0])
 
     def next_generation_of(self):
-        '''
-        core method of the game of life automata
-        '''
         output_matrix = [row[:] for row in self.matrix]
         rows, columns = self.get_rows(), self.get_columns()
 
         for row in range(rows):
             for column in range(columns):
-                output_matrix[row][column] = self._apply_the_rules_to_cell_at()
+                output_matrix[row][column] = self._apply_the_rules_to_cell_at(row, column)
         return output_matrix
 
     def _compute_number_of_living_neighbours_for(self):
@@ -48,17 +39,17 @@ class NextGeneration:
                 living_cell_count_matrix[row].append(living_cell_count)
         return living_cell_count_matrix
 
-    def _apply_the_rules_to_cell_at(self):
-        if self.matrix[self.get_rows()][self.get_columns()] == ALIVE:
-            return self._any_live_cell_with_two_or_more_neighbours_survives()
+    def _apply_the_rules_to_cell_at(self, row, column):
+        if self.matrix[row][column] == ALIVE:
+            return self._any_live_cell_with_two_or_more_neighbours_survives(row, column)
         else:
-            return self._any_dead_cell_with_exactly_three_live_neighbours_becomes_a_live_cell()
+            return self._any_dead_cell_with_exactly_three_live_neighbours_becomes_a_live_cell(row, column)
 
-    def _any_dead_cell_with_exactly_three_live_neighbours_becomes_a_live_cell(self):
-        return ALIVE if self._compute_number_of_living_neighbours_for()[self.get_rows()][self.get_columns()] == 3 else DEAD
+    def _any_dead_cell_with_exactly_three_live_neighbours_becomes_a_live_cell(self, row, column):
+        return ALIVE if self._compute_number_of_living_neighbours_for()[row][column] == 3 else DEAD
 
-    def _any_live_cell_with_two_or_more_neighbours_survives(self):
-        if self._compute_number_of_living_neighbours_for()[self.get_rows()][self.get_columns()] == 2 or self._compute_number_of_living_neighbours_for()[self.get_rows()][self.get_columns()] == 3:
+    def _any_live_cell_with_two_or_more_neighbours_survives(self, row, column):
+        if self._compute_number_of_living_neighbours_for()[row][column] == 2 or self._compute_number_of_living_neighbours_for()[row][column] == 3:
             return ALIVE
         else:
             return DEAD
