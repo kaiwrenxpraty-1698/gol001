@@ -28,6 +28,22 @@ class InputOutput:
         self.option = option
         self.matrix = matrix
 
+    def select_menu_option(self):
+        '''
+        method to select options from the Menu class
+        '''
+        menu = Menu(self.option)
+        if menu.is_valid_option():
+            return menu.grid_for_option()
+        else:
+            exit()
+    def print_matrix(self, matrix):
+        '''
+        method to print matrix
+        '''
+        for idx in range(len(matrix)):
+            print(matrix[idx])
+
     def start_introduction(self):
         '''
         method to load introduction summary from the summary dictionary
@@ -40,13 +56,6 @@ class InputOutput:
         method to load ending summary from the summary dictionary
         '''
         print(self.summary_dict[self.option])
-
-    def print_matrix(self, matrix):
-        '''
-        method to print matrix
-        '''
-        for idx in range(len(matrix)):
-            print(matrix[idx])
 
     def output_print_statement(self, state):
         '''
@@ -72,13 +81,3 @@ class InputOutput:
                 else:
                     output_matrix[idx].append("ALIVE")
         return output_matrix
-    
-    def select_menu_option(self):
-        '''
-        method to select options from the Menu class
-        '''
-        menu = Menu(self.option)
-        if menu.is_valid_option():
-            return menu.grid_for_option()
-        else:
-            exit()
