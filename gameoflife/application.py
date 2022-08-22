@@ -71,9 +71,7 @@ def print_first_generation(first_generation_matrix):
     prints first generation of the input template with static information for the user
     '''
     input_output = InputOutput(None, first_generation_matrix)
-    input_output.output_print_statement("initial generation")
-    input_output.mask_input_matrix_values()
-    input_output.print_matrix()
+    input_output.print_matrix(input_output.mask_input_matrix_values())
     sleep(1)
 
 
@@ -82,14 +80,12 @@ def print_next_generation_matrix(number_of_generation, next_generation_matrix):
     if number_of_generation:
         sleep(.5)
         input_output.output_print_statement("output")
-        input_output.mask_input_matrix_values()
-        input_output.print_matrix()
+        input_output.print_matrix(input_output.mask_input_matrix_values())
         input_output.output_generation_statement(number_of_generation)
     else:
         sleep(.5)
         input_output.output_print_statement("output")
-        input_output.mask_input_matrix_values()
-        input_output.print_matrix()
+        input_output.print_matrix(input_output.mask_input_matrix_values())
 
 
 def generate_second_generation_matrix(number_of_generation, first_generation_matrix):
@@ -104,6 +100,5 @@ def print_intermediate_generation_matrix(next_generation_matrix, number_of_gener
     if number_of_generation:
         sleep(.5)
         input_output.output_print_statement("output")
-        input_output.mask_input_matrix_values()
-        input_output.print_matrix()
+        input_output.print_matrix(input_output.mask_input_matrix_values())
         input_output.output_generation_statement(number_of_generation)
