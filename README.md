@@ -26,7 +26,22 @@ Run tests using
 make test
 ```
 
-
+Coverage Report
+```
+Name                            Stmts   Miss  Cover
+---------------------------------------------------
+gameoflife/__init__.py              0      0   100%
+gameoflife/constants.py             3      0   100%
+gameoflife/input_output.py         32     15    53%
+gameoflife/menu.py                  9      0   100%
+gameoflife/next_generation.py      42      0   100%
+tests/__init__.py                   0      0   100%
+tests/test_input_output.py         10      1    90%
+tests/test_menu.py                 24      1    96%
+tests/test_next_generation.py      22      1    95%
+---------------------------------------------------
+TOTAL                             142     18    87%
+```
 
 ***
 
