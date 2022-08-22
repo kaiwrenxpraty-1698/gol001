@@ -22,7 +22,7 @@ class InputOutput:
         "3": "Blinker",
         "4": "Toad",
         "5": "Glider"
-}
+    }
 }
     def __init__(self, option=None, matrix=None):
         self.option = option
@@ -60,7 +60,7 @@ class InputOutput:
         '''
         print(f"Generation of the matrix --> {number_of_generation}")
 
-    def mask_input_matrix_values(self): 
+    def mask_input_matrix_values(self):
         '''
         method to mask underlying nummeric values with constants
         '''
