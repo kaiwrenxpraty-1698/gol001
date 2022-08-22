@@ -9,7 +9,7 @@ class InputOutput:
     '''
     Class responsible for static response, user interface and flow control of the application
     '''
-    def __init__(self, option, matrix):
+    def __init__(self, option=None, matrix=None):
         self.option = option
         self.matrix = matrix
     def start_introduction(self):
