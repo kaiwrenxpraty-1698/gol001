@@ -36,6 +36,9 @@ class Menu:
         self.option = option
 
     def grid_for_option(self):
+        '''
+        method to select input matrix template
+        '''
         return self.menu_options[self.option]
 
     def is_valid_option(self):
