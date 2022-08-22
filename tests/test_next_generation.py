@@ -1,11 +1,10 @@
 import unittest
 
 from gameoflife.constants import ALIVE, DEAD
-from gameoflife.next_generation import next_generation_of
+from gameoflife.next_generation import NextGeneration
 
 
 class TestApplication(unittest.TestCase):
-    # TODO: Rename to express intent
     def test_implement_game_of_life(self):
         input_matrix = [
                            [DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD],
@@ -20,7 +19,7 @@ class TestApplication(unittest.TestCase):
                                      [DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD]
                                  ] + [[0 for _ in range(10)] for _ in range(6)]
 
-        self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
+        self.assertEqual(NextGeneration(input_matrix).next_generation_of(), expected_output_matrix)
 
     def test_vertical_blinker_becomes_horizontal_in_next_generation(self):
         input_matrix = [
@@ -38,7 +37,7 @@ class TestApplication(unittest.TestCase):
             [DEAD, DEAD, DEAD, DEAD, DEAD]
         ]
 
-        self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
+        self.assertEqual(NextGeneration(input_matrix).next_generation_of(), expected_output_matrix)
 
     def test_horizontal_blinker_becomes_vertical_in_next_generation(self):
         input_matrix = [
@@ -56,7 +55,7 @@ class TestApplication(unittest.TestCase):
             [DEAD, DEAD, DEAD, DEAD, DEAD]
         ]
 
-        self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
+        self.assertEqual(NextGeneration(input_matrix).next_generation_of(), expected_output_matrix)
 
     def test_block_remains_unchanged_in_next_generation(self):
         input_matrix = [
@@ -68,7 +67,7 @@ class TestApplication(unittest.TestCase):
         ]
         expected_output_matrix = [row[:] for row in input_matrix]
 
-        self.assertEqual(next_generation_of(input_matrix), expected_output_matrix)
+        self.assertEqual(NextGeneration(input_matrix).next_generation_of(), expected_output_matrix)
 
 
 if __name__ == "__main__":
