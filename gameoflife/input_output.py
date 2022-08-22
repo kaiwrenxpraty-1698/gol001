@@ -3,11 +3,11 @@ import json
 from gameoflife.constants import DEAD
 from gameoflife.menu import Menu
 
-with open('assets/input.json') as f:
+with open('assets/input.json', encoding='utf8') as f:
     summary_dict = json.load(f)
 
 def end_summary(option):
-        print(summary_dict[option])
+    print(summary_dict[option])
     
 def start_introduction(option):
     name_of_pattern = summary_dict['mapping'][option]
@@ -15,7 +15,7 @@ def start_introduction(option):
 
 def print_matrix(matrix):
     for idx in range(len(matrix)):
-            print(matrix[idx])
+        print(matrix[idx])
 
 def output_print_statement(state):
     print(f"Here is your {state} matrix -->")
