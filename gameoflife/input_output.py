@@ -41,12 +41,12 @@ class InputOutput:
         '''
         print(self.summary_dict[self.option])
 
-    def print_matrix(self):
+    def print_matrix(self, matrix):
         '''
         method to print matrix
         '''
-        for idx in range(len(self.matrix)):
-            print(self.matrix[idx])
+        for idx in range(len(matrix)):
+            print(matrix[idx])
 
     def output_print_statement(self, state):
         '''
