@@ -33,7 +33,7 @@ class NextGeneration:
             for column in range(columns):
                 output_matrix[row][column] = self._apply_the_rules_to_cell_at()
         return output_matrix
-    
+
     def _compute_number_of_living_neighbours_for(self):
         living_cell_count_matrix = [[] for _ in range(len(self.matrix))]
         rows, columns = self.get_rows(), self.get_columns()
