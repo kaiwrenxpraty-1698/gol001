@@ -1,8 +1,6 @@
 from time import sleep
 
 from gameoflife.next_generation import next_generation_of
-from gameoflife.constants import SUMMARY_DICT
-
 from gameoflife.input_output import InputOutput
 
 def start_application(option):
@@ -29,10 +27,10 @@ def start_application(option):
                                                                                                NUMBER_OF_GENERATION)
         InputOutput(option, None).end_summary()
     elif option == "help":
-        print(SUMMARY_DICT['help'])
+        print(InputOutput(None, None).summary_dict['help'])
         return 0
     else:
-        print(SUMMARY_DICT['error'])
+        print(InputOutput(None, None).summary_dict['error'])
         return 0
 
 
