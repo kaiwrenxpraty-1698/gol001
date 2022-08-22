@@ -1,7 +1,13 @@
+'''
+submodule for Menu class
+'''
 from gameoflife.constants import DEAD, ALIVE, BLOCK_PATTERN
 
 
 class Menu:
+    '''
+    Class for input templates and generating matrix based on option input
+    '''
     menu_options = {
         "1": BLOCK_PATTERN,
         "2": [
