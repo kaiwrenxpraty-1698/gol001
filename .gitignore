@@ -14,3 +14,7 @@ __pycache__/
 
 #coverage
 .coverage
+
+# virtual env
+
+cli_env/
